@@ -1,0 +1,162 @@
+@charset "UTF-8";
+/*
+Theme Name: simtoku2
+Description: simtoku2
+Author URI: http://akkagi.info
+ */
+
+$color_main : #fdde6e;
+$color_sub  : #337ab7;  // blue
+$color_subsub: #fd6e70; // red
+$count_category : 5;
+
+@mixin col-sm{ @media (min-width: 34em){ @content; } }
+@mixin col-md{ @media (min-width: 48em){ @content; } }
+@mixin col-lg{ @media (min-width: 62em){ @content; } }
+@mixin col-xl{ @media (min-width: 75em){ @content; } }
+
+.open_button{
+  float: right;
+  padding: 0.1rem 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background-color: #fff;
+  color: #666;
+  @include col-md{ display: none; }
+}
+.open_nav{
+  display: none;
+  background-color: #fff;
+  @include col-md{ display: block; }
+}
+
+$header_height: 40px;
+
+body{
+  font-family: "メイリオ", Meiryo, "ヒラギノ角ゴ Pro W3", Hiragino Kaku Gothic Pro, "ＭＳ Ｐゴシック", sans-serifPT Sans Caption,Josefin Sans,"メイリオ", Meiryo, "ヒラギノ角ゴ Pro W3", Hiragino Kaku Gothic Pro, "ＭＳ Ｐゴシック", sans-serif;
+}
+/* for smart phone */
+header{
+  position: fixed;
+  width: 100%;
+  height: $header_height;
+  border-bottom: 3px solid $color_main;
+  box-sizing: border-box;
+  background-color: #fff;
+  z-index: 100;
+}
+.top{
+  padding-top: 0.3rem;
+}
+.logo{
+  margin-bottom: 0;
+  padding-top: 0.1rem;
+  font-size: 1rem;
+  color: #333;
+  &:before{
+    font-family: 'Material Icons';
+    content: '\e32b'; // sim card
+    content: '\e325'; // phone iphone
+    padding-right: 0.3rem;
+    font-size: 1.6rem;
+    vertical-align: middle;
+    color: $color_main;
+  }
+}
+nav{
+  border-bottom: 3px solid $color_main;
+  ul{
+    list-style: none;
+    li{
+      padding: 0.5rem 1rem;
+      a{
+        color: #333;
+      }
+    }
+  }
+  %material_icons{
+    font-family: 'Material Icons';
+    font-size: 1.5rem;
+    vertical-align: sub;
+    padding-right: 0.5rem;
+    color: #666;
+  }
+  .info:before{  @extend %material_icons; content: '\e32b'; }  // sim card
+  .plan:before{  @extend %material_icons; content: '\e41d'; }  // style
+  .guide:before{ @extend %material_icons; content: '\e869'; }  // build
+  .news:before{  @extend %material_icons; content: '\e05e'; }  // fiber news
+  .faq:before{   @extend %material_icons; content: '\e0bf'; }  // forum
+}
+.img_main{
+  margin: 0 auto 1rem auto;
+  padding-top: $header_height;
+}
+aside{
+  h2{
+    font-size: 1rem;
+  }
+  ul{
+    padding: 0;
+    list-style: none;
+  }
+  .topic{
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #eee;
+    a{
+      display: flex;
+      align-items: center;
+      color: #333;
+    }
+  }
+  .topic_img{
+    width: 100px;
+  }
+  .topic_text{
+    width: calc(100% - 100px - 1rem);
+    padding-left: 1rem;
+  }
+  .topic_text__title{
+    margin-bottom: 0;
+    font-size: 1rem;
+    font-size: 0.9rem;
+    font-weight: normal;
+    line-height: 1.4;
+  }
+  .topic_text__date{
+    font-size: 0.8rem;
+  }
+}
+
+@include col-md{ 
+  .logo{
+    font-size: 1.5rem;
+    line-height: 1.5;
+  }
+
+  nav{
+    $border_width: 4px;
+    padding-top: 1rem;
+    border-bottom: $border_width solid $color_main;
+    ul{
+      margin-bottom: 0;
+      list-style: none; 
+      li{
+        float: left;
+        width: 100% / $count_category;
+        a{
+          display: block;
+          padding-bottom: 0.8rem;
+          text-align: center;
+          color: #333;
+          &:hover{
+            margin-bottom: -$border_width;
+            text-decoration: none;
+            border-bottom: $border_width solid darken( $color_main, 40% );
+          }
+        }
+      }
+    }
+  }
+}
+
