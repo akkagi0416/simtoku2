@@ -36,7 +36,7 @@ function sidebar_pickup( $category_name, $number = 5 ){
           </div>
           <div class="topic_text">
             <h3 class="topic_text__title">{$title}</h3>
-            <time class="topic_text__date" datetime="{$datetime}">{$datetime}</time>
+            <time class="topic_text__date" datetime="{$datetime}"><i class="material-icons">schedule</i>{$datetime}</time>
           </div>
         </a>
       </article>

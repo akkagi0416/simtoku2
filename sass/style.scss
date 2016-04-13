@@ -93,7 +93,15 @@ nav{
 }
 aside{
   h2{
+    padding: 0rem 1rem;
     font-size: 1rem;
+    line-height: 2.5rem;
+    background-color: #eee;
+    border-radius: 2px;
+    a{
+      display: block;
+      color: #333;
+    }
   }
   ul{
     padding: 0;
@@ -103,6 +111,7 @@ aside{
     margin-bottom: 0.5rem;
     padding-bottom: 0.5rem;
     border-bottom: 1px solid #eee;
+    &:last-of-type{ border: none; }
     a{
       display: flex;
       align-items: center;
@@ -115,16 +124,40 @@ aside{
   .topic_text{
     width: calc(100% - 100px - 1rem);
     padding-left: 1rem;
+    time i{
+      padding-right: 0.2rem;
+      font-size: 0.9rem;
+      vertical-align: middle;
+    }
   }
   .topic_text__title{
     margin-bottom: 0;
     font-size: 1rem;
-    font-size: 0.9rem;
     font-weight: normal;
     line-height: 1.4;
   }
   .topic_text__date{
     font-size: 0.8rem;
+    color: #999;
+  }
+  .to_category{
+    text-align: right;
+    i{
+      padding-right: 0.2rem;
+      font-size: 1.3rem;
+      vertical-align: sub;
+    }
+  }
+}
+footer{
+  background-color: $color_main;
+  small{
+    display: block;
+    padding: 1rem 0;
+    text-align: center;
+    a{
+      color: #666;
+    }
   }
 }
 
