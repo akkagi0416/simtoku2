@@ -12,13 +12,11 @@ jQuery(function(){
     jQuery('body').toggleClass('open');
     jQuery('header').toggleClass('open');
     jQuery('#slide_menu').toggleClass('open');
-    // if(body.hasClass('open')){
-    //   body.animate({'right': menuWidth, 'position': absolute }, 300);
-    //   menu.animate({'right': 0 }, 300);
-    // }else{
-    //   body.animate({'right': 0 }, 300);
-    //   menu.animate({'right': -menuWidth }, 300);
-    // }
+  });
+  jQuery('.close_button').click(function(){
+    jQuery('body').removeClass('open');
+    jQuery('header').removeClass('open');
+    jQuery('#slide_menu').removeClass('open');
   });
 });
 </script>

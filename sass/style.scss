@@ -33,7 +33,10 @@ $header_height: 40px;
 body{
   font-family: "メイリオ", Meiryo, "ヒラギノ角ゴ Pro W3", Hiragino Kaku Gothic Pro, "ＭＳ Ｐゴシック", sans-serifPT Sans Caption,Josefin Sans,"メイリオ", Meiryo, "ヒラギノ角ゴ Pro W3", Hiragino Kaku Gothic Pro, "ＭＳ Ｐゴシック", sans-serif;
 }
-/* for slide menu */
+/*
+ * for slide menu
+ */
+// motion part
 $menu_width: 240px;
 body{
   position: relative;
@@ -50,7 +53,6 @@ header{
   right: -$menu_width;
   width: $menu_width;
   height: 100%;
-  background-color: #eee;
   transition: right 0.3s ease;
 }
 body.open,
@@ -62,7 +64,14 @@ header.open{
   right: 0;
   transition: right 0.3s ease;
 }
-/* for smart phone */
+
+// style part
+#slide_menu{
+  background-color: #f6f6f6;
+}
+/*
+ * for smart phone
+ */
 header{
   position: fixed;
   top: 0;
@@ -77,10 +86,18 @@ header{
     display: none;
   }
 }
+.top{
+  display: flex;
+  align-items: center;
+  height: $header_height;
+  a{
+    text-decoration: none;
+  }
+}
 .logo{
-  float: left;
+  display: flex;
+  align-items: center;
   margin: 0;
-  padding-top: 0.3rem;
   padding-left: 0.5rem;
   font-size: 1rem;
   font-weight: normal;
@@ -91,32 +108,52 @@ header{
     content: '\f10b'; // fa-mobile
     padding-right: 0.3rem;
     font-size: 1.6rem;
-    vertical-align: middle;
-    vertical-align: sub;
     color: $color_main;
   }
 }
 .open_button{
-  float: right;
-  margin-top: 0.25rem;
-  margin-right: 1rem;
-  padding: 0.1rem 0.8rem;
+  margin-left: auto;
+  padding: 0 1rem;
   border: none;
   font-weight: bold;
   font-size: 1.2rem;
   background-color: #fff;
   color: #666;
-  @include col-md{ display: none; }
+  // @include col-md{ display: none; }
+}
+.slide_menu__title{
+  margin: 0;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  height: $header_height;
+  line-height: $header_height;
+  background-color: #666;
+  color: #fff;
+  .close_button{
+    margin-left: auto;
+    font-size: 1.3rem;
+  }
 }
 nav{
-  border-bottom: 3px solid $color_main;
   ul{
+    margin: 0;
     padding: 0;
     list-style: none;
     li{
-      padding: 0.5rem 1rem;
+      clear: both;
+      border-bottom: 1px solid #ccc;
       a{
+        display: flex;
+        align-items: center;
+        padding: 0.7rem 1rem;
+        text-decoration: none;
         color: #333;
+        &:after{
+          font-family: 'FontAwesome';
+          content: '\f054'; // fa-chevron-right
+          margin-left: auto;
+        }
       }
     }
   }
@@ -127,11 +164,11 @@ nav{
     padding-right: 0.5rem;
     color: #666;
   }
-  .info:before{  @extend %font_awesome; content: '\f044'; }
-  .plan:before{  @extend %font_awesome; content: '\f115'; }
-  .guide:before{ @extend %font_awesome; content: '\f15d'; }
-  .news:before{  @extend %font_awesome; content: '\f0f6'; }
-  .faq:before{   @extend %font_awesome; content: '\f0e5'; }
+  .info a:before{  @extend %font_awesome; content: '\f044'; }
+  .plan a:before{  @extend %font_awesome; content: '\f115'; }
+  .guide a:before{ @extend %font_awesome; content: '\f15d'; }
+  .news a:before{  @extend %font_awesome; content: '\f0f6'; }
+  .faq a:before{   @extend %font_awesome; content: '\f0e5'; }
 }
 .img_main{
   margin: 0 auto 0rem auto;
@@ -145,6 +182,7 @@ nav{
 }
 aside{
   h2{
+    margin: 0;
     padding: 0rem 1rem;
     font-size: 1rem;
     line-height: 2.5rem;
@@ -152,6 +190,7 @@ aside{
     border-radius: 2px;
     a{
       display: block;
+      text-decoration: none;
       color: #333;
     }
   }
@@ -160,13 +199,13 @@ aside{
     list-style: none;
   }
   .topic{
-    margin-bottom: 0.5rem;
-    padding-bottom: 0.5rem;
+    padding: 0.25rem 0.5rem;
     border-bottom: 1px solid #eee;
     &:last-of-type{ border: none; }
     a{
       display: flex;
       align-items: center;
+      text-decoration: none;
       color: #333;
     }
   }
@@ -174,7 +213,8 @@ aside{
     width: 100px;
   }
   .topic_text{
-    width: calc(100% - 100px - 1rem);
+    // width: calc(100% - 100px - 1rem);
+    flex: 1;  // 残り幅自動計算
     padding-left: 1rem;
     time i{
       padding-right: 0.2rem;
@@ -182,7 +222,7 @@ aside{
     }
   }
   .topic_text__title{
-    margin-bottom: 0;
+    margin: 0;
     font-size: 1rem;
     font-weight: normal;
     line-height: 1.4;
@@ -192,6 +232,7 @@ aside{
     color: #999;
   }
   .to_category{
+    padding-right: 1rem;
     text-align: right;
     i{
       padding-right: 0.2rem;

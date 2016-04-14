@@ -16,27 +16,32 @@
 </head>
 <body>
   <header>
-    <a href="<?php bloginfo( 'url' ); ?>">
-      <?php if( is_front_page() ) : ?>
-        <h1 class="logo"><?php bloginfo( 'title' ); ?></h1>
-      <?php else : ?>
-        <p  class="logo"><?php bloginfo( 'title' ); ?></p>
-      <?php endif; ?>
-    </a>
+    <div class="top">
+      <a href="<?php bloginfo( 'url' ); ?>">
+        <?php if( is_front_page() ) : ?>
+          <h1 class="logo"><?php bloginfo( 'title' ); ?></h1>
+        <?php else : ?>
+          <p  class="logo"><?php bloginfo( 'title' ); ?></p>
+        <?php endif; ?>
+      </a>
     <button class="open_button">☰</button>
+    </div>
     <form  method="get" action="<?php echo home_url( '/' ); ?>">
       <input type="text" value name="s" placeholder="検索...">
       <input type="submit" value="検索">
     </form>
-    <nav id="slide_menu" class="open_nav">
-    <?php
-      $args = array(
-        'container'       => false,
-        'items_wrap'      => '<ul class="container">%3$s</ul>',
-      );
-      wp_nav_menu( $args );
-    ?>
-    </nav>
+    <div id="slide_menu">
+      <p class="slide_menu__title">メニュー<i class="fa fa-times close_button" aria-hidden="true"></i></p>
+      <nav>
+      <?php
+        $args = array(
+          'container'       => false,
+          'items_wrap'      => '<ul>%3$s</ul>',
+        );
+        wp_nav_menu( $args );
+      ?>
+      </nav>
+    </div>
   </header>
   <div class="img_main"><img src="<?php bloginfo( 'template_url' ); ?>/img/main.jpg" alt="" ></div
   <?php if( function_exists( 'bcn_display' ) && !is_front_page() ) : ?>
