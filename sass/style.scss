@@ -15,57 +15,103 @@ $count_category : 5;
 @mixin col-lg{ @media (min-width: 62em){ @content; } }
 @mixin col-xl{ @media (min-width: 75em){ @content; } }
 
-.open_button{
-  float: right;
-  padding: 0.1rem 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  background-color: #fff;
-  color: #666;
-  @include col-md{ display: none; }
+img{
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
-.open_nav{
-  display: none;
-  background-color: #fff;
-  @include col-md{ display: block; }
-}
+
+// .title{
+//   padding: 0.7rem 1rem;
+//   font-size: 1.0rem;
+//   background-color: $color_main;
+//   color: #666;
+// }
 
 $header_height: 40px;
 
 body{
   font-family: "メイリオ", Meiryo, "ヒラギノ角ゴ Pro W3", Hiragino Kaku Gothic Pro, "ＭＳ Ｐゴシック", sans-serifPT Sans Caption,Josefin Sans,"メイリオ", Meiryo, "ヒラギノ角ゴ Pro W3", Hiragino Kaku Gothic Pro, "ＭＳ Ｐゴシック", sans-serif;
 }
+/* for slide menu */
+$menu_width: 240px;
+body{
+  position: relative;
+  right: 0;
+  overflow-x: hidden;
+  transition: right 0.3s ease;
+}
+header{
+  transition: right 0.3s ease;
+}
+#slide_menu{
+  position: fixed;
+  top: 0;
+  right: -$menu_width;
+  width: $menu_width;
+  height: 100%;
+  background-color: #eee;
+  transition: right 0.3s ease;
+}
+body.open,
+header.open{
+  right: $menu_width;
+  transition: right 0.3s ease;
+}
+#slide_menu.open{
+  right: 0;
+  transition: right 0.3s ease;
+}
 /* for smart phone */
 header{
   position: fixed;
+  top: 0;
+  right: 0;
   width: 100%;
   height: $header_height;
   border-bottom: 3px solid $color_main;
   box-sizing: border-box;
   background-color: #fff;
   z-index: 100;
-}
-.top{
-  padding-top: 0.3rem;
+  form{
+    display: none;
+  }
 }
 .logo{
-  margin-bottom: 0;
-  padding-top: 0.1rem;
+  float: left;
+  margin: 0;
+  padding-top: 0.3rem;
+  padding-left: 0.5rem;
   font-size: 1rem;
+  font-weight: normal;
+  line-height: 1.2;
   color: #333;
   &:before{
-    font-family: 'Material Icons';
-    content: '\e32b'; // sim card
-    content: '\e325'; // phone iphone
+    font-family: 'FontAwesome';
+    content: '\f10b'; // fa-mobile
     padding-right: 0.3rem;
     font-size: 1.6rem;
     vertical-align: middle;
+    vertical-align: sub;
     color: $color_main;
   }
+}
+.open_button{
+  float: right;
+  margin-top: 0.25rem;
+  margin-right: 1rem;
+  padding: 0.1rem 0.8rem;
+  border: none;
+  font-weight: bold;
+  font-size: 1.2rem;
+  background-color: #fff;
+  color: #666;
+  @include col-md{ display: none; }
 }
 nav{
   border-bottom: 3px solid $color_main;
   ul{
+    padding: 0;
     list-style: none;
     li{
       padding: 0.5rem 1rem;
@@ -74,22 +120,28 @@ nav{
       }
     }
   }
-  %material_icons{
-    font-family: 'Material Icons';
-    font-size: 1.5rem;
-    vertical-align: sub;
+  %font_awesome{
+    font-family: 'FontAwesome';
+    font-size: 1.2rem;
+    vertical-align: middle;
     padding-right: 0.5rem;
     color: #666;
   }
-  .info:before{  @extend %material_icons; content: '\e32b'; }  // sim card
-  .plan:before{  @extend %material_icons; content: '\e41d'; }  // style
-  .guide:before{ @extend %material_icons; content: '\e869'; }  // build
-  .news:before{  @extend %material_icons; content: '\e05e'; }  // fiber news
-  .faq:before{   @extend %material_icons; content: '\e0bf'; }  // forum
+  .info:before{  @extend %font_awesome; content: '\f044'; }
+  .plan:before{  @extend %font_awesome; content: '\f115'; }
+  .guide:before{ @extend %font_awesome; content: '\f15d'; }
+  .news:before{  @extend %font_awesome; content: '\f0f6'; }
+  .faq:before{   @extend %font_awesome; content: '\f0e5'; }
 }
 .img_main{
-  margin: 0 auto 1rem auto;
+  margin: 0 auto 0rem auto;
   padding-top: $header_height;
+}
+.bread_crumb{
+  padding: 0.5rem 0;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  overflow: hidden;
 }
 aside{
   h2{
@@ -127,7 +179,6 @@ aside{
     time i{
       padding-right: 0.2rem;
       font-size: 0.9rem;
-      vertical-align: middle;
     }
   }
   .topic_text__title{
@@ -144,8 +195,7 @@ aside{
     text-align: right;
     i{
       padding-right: 0.2rem;
-      font-size: 1.3rem;
-      vertical-align: sub;
+      font-size: 1.0rem;
     }
   }
 }
@@ -160,6 +210,10 @@ footer{
     }
   }
 }
+
+/*
+ * single page
+ */
 
 @include col-md{ 
   .logo{
