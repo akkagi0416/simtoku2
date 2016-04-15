@@ -185,19 +185,22 @@ nav{
   font-size: 0.8rem;
   overflow: hidden;
 }
+@mixin section_title{
+  margin: 0;
+  padding: 0rem 1rem;
+  font-size: 1rem;
+  line-height: 2.5rem;
+  background-color: #eee;
+  border-radius: 2px;
+  a{
+    display: block;
+    text-decoration: none;
+    color: #333;
+  }
+}
 aside{
   h2{
-    margin: 0;
-    padding: 0rem 1rem;
-    font-size: 1rem;
-    line-height: 2.5rem;
-    background-color: #eee;
-    border-radius: 2px;
-    a{
-      display: block;
-      text-decoration: none;
-      color: #333;
-    }
+    @include section_title;
   }
   ul{
     padding: 0;
@@ -310,6 +313,11 @@ article{
     text-align: right;
   }
   .topic{ border: none; }
+}
+.relation{
+  h2{
+    @include section_title;
+  }
 }
 @include col-md{ 
   .logo{

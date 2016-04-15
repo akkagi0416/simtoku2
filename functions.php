@@ -43,6 +43,37 @@ function previous_next(){
   echo $html;
 }
 /*
+ * relation
+ */
+function relation( $post ){
+  $categories = wp_get_post_categories( $post->ID, array( 'orderby' => 'rand' ) );
+  if( $categories ){
+    $args = array(
+      'category__in' => array( $categories[0] ),
+      'post__not_in' => array( $post->ID ),
+      'showposts'    => 4,
+      // 'caller_get_posts' => 1,
+      'ignore_sticky_posts' => 1,
+      'orderby'      => 'rand',
+    );
+    $my_query = new WP_Query( $args );
+    if( $my_query->have_posts() ){
+      $html = '';
+      while( $my_query->have_posts() ){
+        $my_query->the_post();
+        $title     = get_the_title();
+        $permalink = get_the_permalink();
+        $datetime  = get_the_time( 'Y-m-d' );
+        $thumbnail = get_the_post_thumbnail( $my_query->ID, 'thumbnail' );
+        $html .= make_topic( '', $title, $permalink, $datetime, $thumbnail );
+      }
+    }
+  }
+
+  wp_reset_postdata();
+  echo $html;
+}
+/*
  * sidebar
  */
 function sidebar_pickup( $category_name, $number = 5 ){

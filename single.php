@@ -7,9 +7,15 @@
           <time class="postdate" datetime="<?php the_time('Y-m-d'); ?>"><i class="fa fa-clock-o" aria-hidden="true"></i><?php the_time('Y-m-d'); ?></time>
           <?php the_content(); ?>
         </article>
+        <!--
         <div class="previous_next">
           <?php previous_next(); ?>
         </div>
+        -->
+        <section class="relation">
+          <h2>関連記事</h2>
+          <?php relation( $post ); ?>
+        </section>
       <?php endwhile; ?>
     <?php endif; ?>
   </main>
