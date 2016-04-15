@@ -10,6 +10,8 @@ $color_sub  : #337ab7;  // blue
 $color_subsub: #fd6e70; // red
 $count_category : 5;
 
+$header_height: 40px;
+
 @mixin col-sm{ @media (min-width: 34em){ @content; } }
 @mixin col-md{ @media (min-width: 48em){ @content; } }
 @mixin col-lg{ @media (min-width: 62em){ @content; } }
@@ -21,17 +23,19 @@ img{
   height: auto;
 }
 
-// .title{
-//   padding: 0.7rem 1rem;
-//   font-size: 1.0rem;
-//   background-color: $color_main;
-//   color: #666;
-// }
-
-$header_height: 40px;
+.hidden{  display: none; }
+.visible{ display: block; }
 
 body{
   font-family: "メイリオ", Meiryo, "ヒラギノ角ゴ Pro W3", Hiragino Kaku Gothic Pro, "ＭＳ Ｐゴシック", sans-serifPT Sans Caption,Josefin Sans,"メイリオ", Meiryo, "ヒラギノ角ゴ Pro W3", Hiragino Kaku Gothic Pro, "ＭＳ Ｐゴシック", sans-serif;
+  line-height: 1.5rem;
+}
+p{
+  margin-bottom: 2rem;
+}
+
+.fa{
+  color: #666;
 }
 /*
  * for slide menu
@@ -153,6 +157,7 @@ nav{
           font-family: 'FontAwesome';
           content: '\f054'; // fa-chevron-right
           margin-left: auto;
+          color: #666;
         }
       }
     }
@@ -170,14 +175,14 @@ nav{
   .news a:before{  @extend %font_awesome; content: '\f0f6'; }
   .faq a:before{   @extend %font_awesome; content: '\f0e5'; }
 }
-.img_main{
-  margin: 0 auto 0rem auto;
+#contents{
   padding-top: $header_height;
 }
 .bread_crumb{
-  padding: 0.5rem 0;
+  height: 1.5rem;
+  line-height: 1.5rem;
+  padding: 0 0.5rem;
   font-size: 0.8rem;
-  white-space: nowrap;
   overflow: hidden;
 }
 aside{
@@ -198,39 +203,6 @@ aside{
     padding: 0;
     list-style: none;
   }
-  .topic{
-    padding: 0.25rem 0.5rem;
-    border-bottom: 1px solid #eee;
-    &:last-of-type{ border: none; }
-    a{
-      display: flex;
-      align-items: center;
-      text-decoration: none;
-      color: #333;
-    }
-  }
-  .topic_img{
-    width: 100px;
-  }
-  .topic_text{
-    // width: calc(100% - 100px - 1rem);
-    flex: 1;  // 残り幅自動計算
-    padding-left: 1rem;
-    time i{
-      padding-right: 0.2rem;
-      font-size: 0.9rem;
-    }
-  }
-  .topic_text__title{
-    margin: 0;
-    font-size: 1rem;
-    font-weight: normal;
-    line-height: 1.4;
-  }
-  .topic_text__date{
-    font-size: 0.8rem;
-    color: #999;
-  }
   .to_category{
     padding-right: 1rem;
     text-align: right;
@@ -240,6 +212,40 @@ aside{
     }
   }
 }
+.topic{
+  padding: 0.25rem 0.5rem;
+  border-bottom: 1px solid #eee;
+  &:last-of-type{ border: none; }
+  a{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+  }
+}
+.topic_img{
+  width: 100px;
+}
+.topic_text{
+  // width: calc(100% - 100px - 1rem);
+  flex: 1;  // 残り幅自動計算
+  padding-left: 1rem;
+  time i{
+    padding-right: 0.2rem;
+    font-size: 0.9rem;
+  }
+}
+.topic_text__title{
+  margin: 0;
+  font-size: 1rem;
+  font-weight: normal;
+  line-height: 1.4;
+}
+.topic_text__date{
+  font-size: 0.8rem;
+  color: #999;
+}
+
 footer{
   background-color: $color_main;
   small{
@@ -255,7 +261,56 @@ footer{
 /*
  * single page
  */
-
+article{
+  padding: 0 0.5rem;
+  h2{
+    padding: 0.2rem 0.5rem;
+    font-size: 1rem;
+    border-bottom: 3px solid $color_main;
+    border-left: 3px solid $color_main;
+    border-radius: 3px;
+  }
+  h3{
+    font-size: 1rem;
+  }
+  h4{
+    font-size: 1rem;
+  }
+  ul, ol{
+    margin-top: -1rem;
+  }
+}
+.title{
+  font-size: 1rem;
+}
+.postdate{
+  padding-right: 1rem;
+  display: block;
+  text-align: right;
+  font-size: 0.9rem;
+  color: #666;
+  i{
+    padding-right: 0.2rem;
+  }
+}
+.previous_next{
+  a{
+    text-decoration: none;
+    color: #333;
+  }
+  p{
+    margin: 0;
+    padding: 0.2rem 0.5rem;
+    background-color: #eee;
+    i{
+      padding: 0 0.5rem;
+    }
+  }
+  .next p {
+    text-align: right;
+  }
+  .topic{ border: none; }
+}
 @include col-md{ 
   .logo{
     font-size: 1.5rem;

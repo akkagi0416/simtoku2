@@ -11,9 +11,40 @@ function remove_class( $classes, $item ){
 }
 function remove_id( $id ){ return $id = array(); }
 
-//
-// sidebar
-//
+/*
+ * previous_next
+ */
+function previous_next(){
+  $prev = get_adjacent_post( true, '', true );
+  $next = get_adjacent_post( true, '', false );
+  $html = '';
+  if( $prev ){
+    $title     = get_the_title( $prev->ID );
+    $permalink = get_permalink( $prev->ID );
+    $datetime  = get_the_time( 'Y-m-d', $prev->ID );
+    $thumbnail = get_the_post_thumbnail( $prev->ID, 'thumbnail' );
+    $html .= '<div class="previous">';
+    $html .= '<a href="' . $permalink . '"><p><i class="fa fa-chevron-left" aria-hidden="true"></i>前の記事</p></a>';
+    // $html .= make_topic( 'prev', $title, $permalink, $datetime, $thumbnail );
+    $html .= make_topic( '', $title, $permalink, $datetime, $thumbnail );
+    $html .= '</div>';
+  }
+  if( $next ){
+    $title     = get_the_title( $next->ID );
+    $permalink = get_permalink( $next->ID );
+    $datetime  = get_the_time( 'Y-m-d', $next->ID );
+    $thumbnail = get_the_post_thumbnail( $next->ID, 'thumbnail' );
+    $html .= '<div class="next">';
+    $html .= '<a href="' . $permalink . '"><p>次の記事<i class="fa fa-chevron-right" aria-hidden="true"></i></p></a>';
+    // $html .= make_topic( 'next', $title, $permalink, $datetime, $thumbnail );
+    $html .= make_topic( '', $title, $permalink, $datetime, $thumbnail );
+    $html .= '</div>';
+  }
+  echo $html;
+}
+/*
+ * sidebar
+ */
 function sidebar_pickup( $category_name, $number = 5 ){
   $args = array(
     'category_name'  => $category_name,
@@ -26,23 +57,30 @@ function sidebar_pickup( $category_name, $number = 5 ){
       $my_query->the_post();
       $title     = get_the_title();
       $permalink = get_the_permalink();
-      $datetime  = get_the_time('Y-m-d');
-      $thumbnail = get_the_post_thumbnail( $my_query->ID, 'thumbnail', array( 'class' => 'img-fluid' ) );
-      $html .= <<< EOM
-      <article class="topic">
-        <a href="{$permalink}">
-          <div class="topic_img">
-            {$thumbnail}
-          </div>
-          <div class="topic_text">
-            <h3 class="topic_text__title">{$title}</h3>
-            <time class="topic_text__date" datetime="{$datetime}"><i class="fa fa-clock-o" aria-hidden="true"></i>{$datetime}</time>
-          </div>
-        </a>
-      </article>
-EOM;
+      $datetime  = get_the_time( 'Y-m-d' );
+      $thumbnail = get_the_post_thumbnail( $my_query->ID, 'thumbnail' );
+      // $thumbnail = get_the_post_thumbnail( $my_query->ID, 'thumbnail', array( 'class' => 'img-fluid' ) );
+      $html .= make_topic( '', $title, $permalink, $datetime, $thumbnail );
     }
   }
   wp_reset_postdata();
+  echo $html;
+}
+
+function make_topic( $class, $title, $permalink, $datetime, $thumbnail ){
+  $html = <<< EOM
+  <article class="topic {$class}">
+    <a href="{$permalink}">
+      <div class="topic_img">
+        {$thumbnail}
+      </div>
+      <div class="topic_text">
+        <h3 class="topic_text__title">{$title}</h3>
+        <time class="topic_text__date" datetime="{$datetime}"><i class="fa fa-clock-o" aria-hidden="true"></i>{$datetime}</time>
+      </div>
+    </a>
+  </article>
+EOM;
+
   return $html;
 }

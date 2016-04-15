@@ -43,9 +43,14 @@
       </nav>
     </div>
   </header>
-  <div class="img_main"><img src="<?php bloginfo( 'template_url' ); ?>/img/main.jpg" alt="" ></div
-  <?php if( function_exists( 'bcn_display' ) && !is_front_page() ) : ?>
-    <div class="bread_crumb">
-      <?php bcn_display(); ?>
-    </div>
-  <?php endif; ?>
+  <div id="contents">
+    <?php if( is_front_page() || is_category() ) : ?>
+      <div class="img_main"><img src="<?php bloginfo( 'template_url' ); ?>/img/main.jpg" alt="" ></div>
+    <?php else : ?>
+      <div class="img_main hidden"><img src="<?php bloginfo( 'template_url' ); ?>/img/main.jpg" alt="" ></div>
+    <?php endif; ?>
+    <?php if( function_exists( 'bcn_display' ) && !is_front_page() ) : ?>
+      <div class="bread_crumb">
+        <?php bcn_display(); ?>
+      </div>
+    <?php endif; ?>

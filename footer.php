@@ -1,3 +1,4 @@
+  </div><!-- //#contents -->
   <footer>
     <small><a href="<?php bloginfo( 'url' ); ?>">&copy; 2015 格安SIMでスマホお得道</a></small>
   </footer>
