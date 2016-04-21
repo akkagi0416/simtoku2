@@ -3,6 +3,11 @@
 add_theme_support( 'menus' );
 add_theme_support( 'post-thumbnails' );
 
+// my library
+require_once dirname( __FILE__ ) . '/lib/mvnodb.php';       // mvno関連のデータベース操作
+require_once dirname( __FILE__ ) . '/lib/shortcode.php';    // shortcode集
+require_once dirname( __FILE__ ) . '/lib/mobile.php';       // mobile関連のデータベース操作
+
 // wp_nav_menu remove id, class
 add_filter( 'nav_menu_css_class', 'remove_class', 100, 2 );
 add_filter( 'nav_menu_item_id',   'remove_id', 10 );
