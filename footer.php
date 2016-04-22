@@ -1,7 +1,21 @@
   </div><!-- //#contents -->
   <footer>
-    <small><a href="<?php bloginfo( 'url' ); ?>">&copy; 2015 格安SIMでスマホお得道</a></small>
+    <div class="footer_img">
+      <a href="<?php bloginfo( 'url' ); ?>/about/">
+        <i class="fa fa-map-o footer_img__logo" aria-hidden="true"></i>
+      </a>
+    </div>
+    <div class="footer_text">
+      <ul>
+        <li><a href="<?php bloginfo( 'url' ); ?>/about/">サイト情報</a></li>
+        <li><a href="<?php bloginfo( 'url' ); ?>/about/#contact">お問い合わせ</a></li>
+      </ul>
+      <small><a href="<?php bloginfo( 'url' ); ?>">&copy; 2015 格安SIMでスマホお得道</a></small>
+    </div>
   </footer>
+  <div class="to_top">
+    <i class="fa fa-arrow-up" aria-hidden="true"></i>
+  </div>
 <?php wp_footer(); ?>
 <script>
 jQuery(function(){
@@ -35,7 +49,19 @@ jQuery(function(){
       jQuery(this).wrap('<div class="iframe-responsive"></div>');
     }
   });
-
+  
+  // to top
+  jQuery('body').attr('id', 'to_top');
+  jQuery('.to_top').click(function(){
+    jQuery('body').animate({scrollTop: '0'}, 500);
+  });
+  jQuery(window).scroll(function(){
+    if(jQuery(this).scrollTop() > 200){
+      jQuery('.to_top').fadeIn();
+    }else{
+      jQuery('.to_top').fadeOut();
+    }
+  });
 });
 </script>
 </body>

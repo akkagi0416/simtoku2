@@ -30,27 +30,28 @@
       <input type="text" value name="s" placeholder="検索...">
       <input type="submit" value="検索">
     </form>
-    <div id="slide_menu">
-      <p class="slide_menu__title">メニュー<i class="fa fa-times close_button" aria-hidden="true"></i></p>
-      <nav>
-      <?php
-        $args = array(
-          'container'       => false,
-          'items_wrap'      => '<ul>%3$s</ul>',
-        );
-        wp_nav_menu( $args );
-      ?>
-      </nav>
-    </div>
   </header>
+  <div id="slide_menu">
+    <p class="slide_menu__title">メニュー<i class="fa fa-times close_button" aria-hidden="true"></i></p>
+    <nav>
+    <?php
+      $args = array(
+        'container'       => false,
+        'items_wrap'      => '<ul>%3$s</ul>',
+      );
+      wp_nav_menu( $args );
+    ?>
+    </nav>
+  </div>
+  <div class="dummy_header"></div>
+  <?php if( is_front_page() || is_category() ) : ?>
+    <div class="img_main"><img src="<?php bloginfo( 'template_url' ); ?>/img/main.jpg" alt="" ></div>
+  <?php else : ?>
+    <div class="img_main hidden"><img src="<?php bloginfo( 'template_url' ); ?>/img/main.jpg" alt="" ></div>
+  <?php endif; ?>
+  <?php if( function_exists( 'bcn_display' ) && !is_front_page() ) : ?>
+    <div class="bread_crumb">
+      <?php bcn_display(); ?>
+    </div>
+  <?php endif; ?>
   <div id="contents">
-    <?php if( is_front_page() || is_category() ) : ?>
-      <div class="img_main"><img src="<?php bloginfo( 'template_url' ); ?>/img/main.jpg" alt="" ></div>
-    <?php else : ?>
-      <div class="img_main hidden"><img src="<?php bloginfo( 'template_url' ); ?>/img/main.jpg" alt="" ></div>
-    <?php endif; ?>
-    <?php if( function_exists( 'bcn_display' ) && !is_front_page() ) : ?>
-      <div class="bread_crumb">
-        <?php bcn_display(); ?>
-      </div>
-    <?php endif; ?>
