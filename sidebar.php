@@ -17,9 +17,6 @@
         $html .= <<< EOM
         <div class="ranking_box">
           <a href="{$href}">
-            <!--
-            <p class="ranking_box__ranking">{$count}位</p>
-            -->
             <div class="ranking_box__img">
               <img src="{$img}" alt="{$value}">
             </div>

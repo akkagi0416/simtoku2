@@ -2,17 +2,19 @@
   <main>
     <section>
       <h1 class="category_title"><?php $cat_info = get_category( $cat ); echo esc_html( $cat_info->name ); ?></h1>
-      <?php if( have_posts() ) : ?>
-        <?php while( have_posts() ) : the_post(); ?>
-          <?php
-            $title     = get_the_title();
-            $permalink = get_the_permalink();
-            $datetime  = get_the_time( 'Y-m-d' );
-            $thumbnail = get_the_post_thumbnail( $post->ID, 'thumbnail' );
-            echo make_topic( '', $title, $permalink, $datetime, $thumbnail );
-          ?>
-        <?php endwhile; ?>
-      <?php endif; ?>
+      <div class="topics">
+        <?php if( have_posts() ) : ?>
+          <?php while( have_posts() ) : the_post(); ?>
+            <?php
+              $title     = get_the_title();
+              $permalink = get_the_permalink();
+              $datetime  = get_the_time( 'Y-m-d' );
+              $thumbnail = get_the_post_thumbnail( $post->ID, 'thumbnail' );
+              echo make_topic( '', $title, $permalink, $datetime, $thumbnail );
+            ?>
+          <?php endwhile; ?>
+        <?php endif; ?>
+      </div>
       <div class="pagination">
         <?php
           global $wp_query;

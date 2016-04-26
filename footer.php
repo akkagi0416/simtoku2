@@ -9,6 +9,7 @@
       <ul>
         <li><a href="<?php bloginfo( 'url' ); ?>/about/">サイト情報</a></li>
         <li><a href="<?php bloginfo( 'url' ); ?>/about/#contact">お問い合わせ</a></li>
+        <li><a href="<?php bloginfo( 'url' ); ?>/category/blog/">管理人のひとり言</a></li>
       </ul>
       <small><a href="<?php bloginfo( 'url' ); ?>">&copy; 2015 格安SIMでスマホお得道</a></small>
     </div>

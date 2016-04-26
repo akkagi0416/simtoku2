@@ -4,10 +4,17 @@ Theme Name: simtoku2
 Description: simtoku2
 Author URI: http://akkagi.info
  */
+@import "aiu.scss";
 
 $color_main : #fdde6e;
 $color_sub  : #337ab7;  // blue
 $color_subsub: #fd6e70; // red
+
+// $color_main :  #ffda55;
+// $color_sub  :  #0062ff; // blue
+// $color_subsub: #ff55b0; // red
+
+
 $count_category : 5;
 
 $header_height: 40px;
@@ -19,6 +26,10 @@ $header_height: 40px;
 
 a{
   color: $color_sub;
+  text-decoration: none;
+  &:hover{
+    text-decoration: underline;
+  }
 }
 img{
   // display: block;
@@ -28,6 +39,7 @@ img{
 table{
   border-collapse: collapse;
   border-spacing: 0;
+  font-size: 0.8rem;
 }
 strong{
   color: $color_subsub;
@@ -179,11 +191,12 @@ nav{
     padding-right: 0.5rem;
     color: #666;
   }
-  .info a:before{  @extend %font_awesome; content: '\f044'; }
-  .plan a:before{  @extend %font_awesome; content: '\f115'; }
-  .guide a:before{ @extend %font_awesome; content: '\f15d'; }
-  .news a:before{  @extend %font_awesome; content: '\f0f6'; }
-  .faq a:before{   @extend %font_awesome; content: '\f0e5'; }
+  .info a:before{    @extend %font_awesome; content: '\f044'; }
+  .plan a:before{    @extend %font_awesome; content: '\f115'; }
+  .guide a:before{   @extend %font_awesome; content: '\f15d'; }
+  .news a:before{    @extend %font_awesome; content: '\f0f6'; }
+  .faq a:before{     @extend %font_awesome; content: '\f0e5'; }
+  .ranking a:before{ @extend %font_awesome; content: '\f091'; } // fa-trophy
 }
 .dummy_header{
   padding-top: $header_height;
@@ -230,9 +243,7 @@ aside{
     a{
       display: flex;
       align-items: center;
-      text-decoration: none;
       &:hover{
-        text-decoration: underline;
         .ranking_box__img{
           transform: scale(1.02);
         }
@@ -273,8 +284,8 @@ aside{
     color: #333;
     &:hover{
       .topic_img{
-        // opacity: 0.7;
-        transform: scale(1.02);
+        opacity: 0.7;
+        // transform: scale(1.02);
       }
       .topic_text__title{
         color: $color_sub;
@@ -318,6 +329,7 @@ footer{
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 1rem 0;
   background-color: #eee;
   .footer_img{
     &__logo{
@@ -340,7 +352,7 @@ footer{
   }
   small{
     display: block;
-    padding: 1rem 0;
+    padding: 0.2rem 0;
     text-align: center;
     a{
       text-decoration: none;
@@ -396,12 +408,12 @@ article.page{
   }
   .panel-heading{
     padding: 0.5rem;
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
-    border-top: 1px solid #ccc;
-    border-right: 1px solid #ccc;
-    border-left: 1px solid #ccc;
-    background-color: #eee;
+    // border-top-left-radius: 3px;
+    // border-top-right-radius: 3px;
+    // border-top: 1px solid #ccc;
+    // border-right: 1px solid #ccc;
+    // border-left: 1px solid #ccc;
+    // background-color: #eee;
   }
   .table-responsive{
     display: block;
@@ -549,6 +561,9 @@ article.page{
     border: 1px solid #ccc;
     text-decoration: none;
     color: $color_sub;
+    &:hover{
+      background-color: #eee;
+    }
     &.current{
       border: 1px solid $color_sub;
       background-color: $color_sub;
@@ -567,6 +582,76 @@ article.page{
     }
   }
 }
+/*
+ * mvno short_code
+ */
+.mvno_info{
+  dl{
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 1rem;
+    font-size: 0.9rem;
+    dt{
+      width: 6rem;
+      font-weight: bold;
+    }
+    dd{
+      margin: 0;
+      padding-left: 1rem;
+      width: calc(100% - 6rem - 1rem);
+    }
+  }
+  ul{
+    padding-left: 1rem;
+    list-style: none;
+    li{
+      padding: 0.25rem 0;
+      .fa{
+        padding-right: 0.5rem;
+        font-size: 1.3rem;
+        color: $color_main;
+      }
+    }
+  }
+  table{
+    td{
+      white-space: nowrap;
+      text-align: center;
+    }
+  }
+  .mybtn{
+    p{
+      span{
+        display: block;
+        text-align: center;
+        &:after{
+          font-family: 'FontAwesome';
+          content: '\f063'; // fa-arrow-down
+          color: #666;
+          padding-right: 0.5rem;
+        }
+      }
+    }
+    a{
+      display: block;
+      margin: 0.5rem 1rem;
+      padding: 0.75rem 2rem;
+      border-radius: 5px;
+      text-align: center;
+      background-color: $color_sub;
+      color: #fff;
+      &:hover{
+        background-color: lighten($color_sub, 5%);
+      }
+      &:after{
+        font-family: 'FontAwesome';
+        content: '\f054'; // fa-chevron-right
+        padding-left: 0.5rem;
+      }
+    }
+  }
+}
+/* for ipad */
 @include col-md{ 
   header,
   #slide_menu,
@@ -584,8 +669,12 @@ article.page{
   }
   header{
     position: initial;
-    height: auto;
+    // height: 50px;
+    padding-top: 0.25rem;
     border: none;
+  }
+  .top{
+    // height: 50px;
   }
   #slide_menu{
     position: initial;
@@ -618,12 +707,15 @@ article.page{
       li{
         border: none;
         a{
+          // padding: 0.5rem 1rem;
+          padding: 1rem 1rem 0.5rem 1rem;
           &:after{
             content: '';
           }
           &:hover{
             margin-bottom: -$border_size;
             border-bottom: $border_size solid darken($color_main, 30%);
+            text-decoration: none;
           }
         }
       }
@@ -636,6 +728,98 @@ article.page{
     padding: 0.5em 1rem;
     > span{
       padding: 0 0.5rem;
+    }
+  }
+  .title{
+    padding: 2.5rem 1rem 1rem 1rem;
+  }
+  .postdate{
+    padding-bottom: 1rem;
+  }
+  footer{
+    .footer_text{
+      ul{
+        display: flex;
+        a{
+          padding: 0.5rem 1rem;
+        }
+      }
+    }
+    small{
+      padding-left: 1rem;
+      text-align: left;
+    }
+  }
+  /* category page */
+  .topics{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    .topic{
+      width: 15rem;
+      margin: 1rem 0.25rem;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      box-sizing: border-box;
+      a{
+        flex-direction: column;
+        &:hover{
+          .topic_img{
+            transform: none;
+          }
+        }
+      }
+      .topic_img{
+        width: 12rem;
+        height: 8rem;
+        padding: 0.5rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        img{
+          margin: 0 auto;
+          max-height: 8rem;
+        }
+      }
+      .topic_text{
+        display: flex;
+        flex-wrap: wrap;
+        &__title{
+          order: 2;
+          padding-bottom: 1rem;
+        }
+        &__date{
+          padding: 0.5rem 0;
+          order: 1;
+        }
+      }
+      &:hover{
+        border: 1px solid $color_sub;
+      }
+    }
+  }
+  .mvno_info{
+    .row{
+      display: flex;
+    }
+    .col-sm-5{
+      width: 20rem; 
+    }
+    .col-sm-7{
+      padding-left: 2rem;
+      flex: 1;
+    }
+    .mybtn{
+      p{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        span{
+          &:after{
+            content: '\f061'; // fa-arrow-right
+          }
+        }
+      }
     }
   }
 }
