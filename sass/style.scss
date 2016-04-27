@@ -585,6 +585,233 @@ article.page{
 /*
  * mvno short_code
  */
+.mvno_header{
+  .mvno_header__img{
+  }
+  .mvno_header__text{
+    .mvno_header__catch{
+      display: none;
+    }
+  }
+  .mvno_header__spec{
+    margin-bottom: 1rem;
+    th{
+      white-space: nowrap;
+    }
+    th, td{
+      line-height: 1.2;
+      font-size: 0.9rem;
+    }
+    &_type{
+      display: flex;
+      margin: 0;
+      span{
+        width: 5rem;
+        padding-right: 0.5rem;
+      }
+    }
+  }
+}
+.mvno_function{
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  li{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 4rem;
+    height: 2rem;
+    margin: 0 1px 1px 0;
+    padding: 0.5rem;
+    font-size: 0.8rem;
+    line-height: 1.2;
+    text-align: center;
+    border-radius: 3px;
+  }
+  .ok{
+    background-color: $color_subsub;
+    color: #fff;
+  }
+  .ng{
+    background-color: #eee;
+    color: #666;
+  }
+}
+.mvno_feature{
+  ul{
+    margin: 0;
+    padding: 1rem;
+    list-style: none;
+    border: 2px solid $color_main;
+    border-radius: 3px;
+    background-color: rgba($color_main, 0.05);
+    li{
+      padding-bottom: 1.0rem;
+      line-height: 1.3;
+      &:before{
+        font-family: 'FontAwesome';
+        content: '\f046';
+        color: $color_subsub;
+        padding-right: 0.5rem;
+        font-size: 1.3rem;
+      }
+    }
+  }
+}
+.mvno_graph{
+  margin-bottom: 1rem;
+  .mvno_graph__total{
+    margin: 0;
+    padding: 0.5rem 1rem;
+    // border: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    border-radius: 2px;
+    background-color: #f6f6f6;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  .mvno_graph__total_value{
+    padding-left: 1rem;
+    font-size: 1.2rem;
+    color: $color_subsub;
+  }
+  .mvno_graph__total_stars{
+    display: block;
+    margin-top: 0.25rem;
+    .fa{
+      font-size: 1.3rem;
+      color: $color_main;
+    }
+  }
+  .mvno_graph__scores{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0.5rem 1rem;
+    border: 1px solid #ccc;
+    // border-right: 1px solid #ccc;
+    // border-bottom: 1px solid #ccc;
+    // border-left: 1px solid #ccc;
+    border-radius: 2px;
+    font-size: 0.9rem;
+    .score{
+      display: flex;
+      align-items: center;
+      margin: 0;
+      padding-right: 1rem;
+      &__text{
+        width: 4rem;
+      }
+      &__value{
+        // color: $color_sub;
+      }
+      .fa{
+        padding-right: 0.2rem;
+        font-size: 1.2em;
+        color: $color_subsub;
+      }
+    }
+  }
+}
+.review{
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border-radius: 2px;
+  .review_header{
+    display: flex;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #ccc;
+    &__img{
+      width: 3rem;
+      height: 3rem;
+      img{
+        border-radius: 100%;
+      }
+    }
+    &__text{
+      flex: 1;
+      padding-left: 1rem;
+      font-size: 0.9rem;
+    }
+    &__score{
+      display: flex;
+      flex-wrap: wrap;
+      .score{
+        margin: 0;
+        .fa{ color: $color_subsub; }
+        &__text{ display: none; }
+        &__value{ padding-right: 1rem; }
+      }
+    }
+  }
+  .review_title{
+    margin: 0;
+    font-weight: normal;
+    font-size: 0.9rem;
+    .sex{ padding: 0 1rem; }
+    &:before{ display: none; }
+  }
+  &.man{
+    border: 1px solid $color_sub;
+    .review_header__img{
+       img{
+         border: 1px solid $color_sub;
+       }
+     }
+  }
+  &.woman{
+    border: 1px solid $color_subsub;
+    .review_header__img{ 
+      img{
+        border: 1px solid $color_subsub;
+      }
+    }
+  }
+  .review_comment{
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+}
+.mvno_button{
+  text-align: center;
+  button{
+    width: 90%;
+    margin-bottom: 0.5rem;
+    border-radius: 2px;
+    a{
+      display: block;
+      padding: 0.5rem 1rem;
+      &:after{
+        font-family: 'FontAwesome';
+        content: '\f054';
+        padding-left: 1rem;
+      }
+    }
+  }
+  .mvno_button__detail{
+    border: 1px solid #ccc;
+    background-color: #fff;
+    &:hover{ background-color: #eee; }
+  }
+  .mvno_button__official{
+    background-color: $color_sub;
+    border: $color_sub;
+    &:hover{ background-color: lighten($color_sub, 10%); }
+    a{
+      color: #fff;
+    }
+  }
+}
+/*
+ * mvno short_code
+ */
+/*
 .mvno_info{
   dl{
     display: flex;
@@ -651,6 +878,7 @@ article.page{
     }
   }
 }
+*/
 /* for ipad */
 @include col-md{ 
   header,

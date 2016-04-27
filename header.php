@@ -12,7 +12,6 @@
   -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
   <link rel="stylesheet" href="<?php bloginfo( 'stylesheet_url' ); ?>">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.1.1/Chart.min.js"></script>
   <?php wp_head(); ?>
 </head>
 <body>

@@ -34,12 +34,14 @@ function mvno_s_func( $atts )
   $m = new Mvno();
   $mvno = $m->get_mvno( $shortname );
 
-  $html  = mvno_header( $mvno );
+  $html  = '<section class="mvno_s">';
+  $html .= mvno_header( $mvno );
   $html .= mvno_function( $mvno );
   $html .= mvno_feature( $mvno );
   $html .= mvno_graph( $mvno );
-
   $html .= mvno_review( $shortname );
+  $html .= mvno_button( $mvno );
+  $html .= '</section>';
 
   return $html;
 }
@@ -47,20 +49,21 @@ function mvno_header( $mvno )
 {
   $html = <<<EOM
   <div class="mvno_header">
+    <h3 class="mvno_header__title">{$mvno['mvno']}</h3>
     <div class="mvno_header__img">
       {$mvno['afi_img']}
     </div>
     <div class="mvno_header__text">
-      <h3 class="mvno_header__title">{$mvno['catch_copy']}</h3>
+      <p class="mvno_header__catch">{$mvno['catch_copy']}</p>
       <table class="mvno_header__spec">
         <tr>
           <th>月額料金</th>
           <td>
-            <p class="mvno_header__spec_type"><span>データ</span>{$mvno['cost_data']}円～</p>
-            <p class="mvno_header__spec_type"><span>通話</span>{$mvno['cost_voice']}円～</p>
+            <p class="mvno_header__spec_type"><span>データSIM</span>{$mvno['cost_data']}円～</p>
+            <p class="mvno_header__spec_type"><span>通話SIM</span>{$mvno['cost_voice']}円～</p>
           </td>
         </tr>
-        <tr><th>データ量量</th><td>{$mvno['data_type']}</td></tr>
+        <tr><th>データ容量</th><td>{$mvno['data_type']}</td></tr>
         <tr><th>回線</th><td>{$mvno['line']}</td></tr>
       </table>
     </div>
@@ -91,38 +94,63 @@ function mvno_function( $mvno )
 function mvno_feature( $mvno )
 {
   $html = <<<EOM
-  <ul class="mvno_feature">
-    <li>{$mvno['feature1']}</li>
-    <li>{$mvno['feature2']}</li>
-    <li>{$mvno['feature3']}</li>
-  </ul>
+  <div class="mvno_feature">
+    <h3 class="mvno_feature__point">{$mvno['mvno']}のここがおすすめポイント</h3>
+    <ul>
+      <li>{$mvno['feature1']}</li>
+      <li>{$mvno['feature2']}</li>
+      <li>{$mvno['feature3']}</li>
+    </ul>
+  </div>
 EOM;
 
   return $html;
 }
 function mvno_graph( $mvno )
 {
+  $integer_part = floor( $mvno['average'] );
+  $round_part   = $mvno['average'] - $integer_part;
+  $stars = '';
+  for( $i = 0; $i < $integer_part; $i++ ){
+    $stars .= '<i class="fa fa-star" aria-hidden="true"></i>';
+  }
+  if( $round_part > 0.66 ){
+    $stars .= '<i class="fa fa-star" aria-hidden="true"></i>';
+  }elseif( $round_part > 0.33 ){
+    $stars .= '<i class="fa fa-star-half-o" aria-hidden="true"></i>';
+  }else{
+    $stars .= '<i class="fa fa-star-o" aria-hidden="true"></i>';
+  }
+  for( $i = 0; $i < 5 - $integer_part - 1; $i++ ){
+    $stars .= '<i class="fa fa-star-o-" aria-hidden="true"></i>';
+  }
   $html = <<<EOM
   <div class="mvno_graph">
+    <h3 class="mvno_graph__title">ユーザー評価やレビュー</h3>
     <canvas id="mvno_graph__{$mvno['shortname']}" width="256px" height="256px"></canvas>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.1.1/Chart.min.js"></script>
     <script>
       var data = {
         labels: ["価格", "通信", "通話", "サポート", "満足度" ],
         datasets: [
           {
             label:                "{$mvno['mvno']}",
-            fillColor:            "rgba(253, 222, 110, 0.5)",
-            strokeColor:          "rgba(253, 222, 110, 1.0)",
-            pointColor:           "rgba(253, 222, 110, 1.0)",
+            fillColor:            "rgba(51, 122, 183, 0.2)",
+            strokeColor:          "rgba(51, 122, 183, 1.0)",
+            pointColor:           "rgba(51, 122, 183, 1.0)",
             pointStrokeColor:     "#fff",
-            pointHighlightFill:   "rgba(253, 222, 110, 1.0)",
-            pointHighlightStroke: "rgba(253, 222, 110, 1.0)",
+            pointHighlightFill:   "rgba(51, 122, 183, 1.0)",
+            pointHighlightStroke: "rgba(51, 122, 183, 1.0)",
             data: [ {$mvno['q1']}, {$mvno['q2']},{$mvno['q3']},{$mvno['q4']},{$mvno['q5']}]
           },
         ]
       };
       var option = {
         scaleShowLabels: true,
+        scaleOverride: true,
+        scaleSteps: 5,
+        scaleStepWidth: 1,
+        scaleStartValue: 0,
         pointLabelFontSize: 16,
         angleLineColor: "rgba(0, 0, 0, 0.2)",
         scaleLineColor: "rgba(0, 0, 0, 0.2)"
@@ -130,6 +158,18 @@ function mvno_graph( $mvno )
       var ctx = document.getElementById('mvno_graph__{$mvno['shortname']}').getContext('2d');
       var myRadar = new Chart(ctx).Radar(data, option);
     </script>
+    <div class="mvno_graph__total">
+      <span class="mvno_graph__total_text">総合評価</span>
+      <span class="mvno_graph__total_value">{$mvno['average']}</span>
+      <span class="mvno_graph__total_stars">{$stars}</span>
+    </div>
+    <div class="mvno_graph__scores">
+      <p class="score"><i class="fa fa-jpy fa-fw" aria-hidden="true"></i><span class="score__text">料金</span><span class="score__value">{$mvno['q1']}</span></p>
+      <p class="score"><i class="fa fa-wifi fa-fw" aria-hidden="true"></i><span class="score__text">通信</span><span class="score__value">{$mvno['q2']}</span></p>
+      <p class="score"><i class="fa fa-phone fa-fw" aria-hidden="true"></i><span class="score__text">通話</span><span class="score__value">{$mvno['q3']}</span></p>
+      <p class="score"><i class="fa fa-heart-o fa-fw" aria-hidden="true"></i><span class="score__text">サポート</span><span class="score__value">{$mvno['q4']}</span></p>
+      <p class="score"><i class="fa fa-bar-chart fa-fw" aria-hidden="true"></i><span class="score__text">全体的</span><span class="score__value">{$mvno['q5']}</span></p>
+    </div>
   </div>
 EOM;
 
@@ -144,13 +184,14 @@ function mvno_review( $shortname )
   foreach( $reviews as $review ){
     $sex = $review['sex'];
     $age = $review['age'];
+    $class = $sex == 1 ? 'man' : 'woman';
     if( $sex == 1 && $age <  5 ){ $img = '<img src="' . get_bloginfo( 'template_url' ) . '/img/man_01.png" alt="男性">'; }
     if( $sex == 1 && $age >= 5 ){ $img = '<img src="' . get_bloginfo( 'template_url' ) . '/img/man_02.png" alt="男性">'; }
     if( $sex == 2 && $age <  5 ){ $img = '<img src="' . get_bloginfo( 'template_url' ) . '/img/woman_01.png" alt="女性">'; }
     if( $sex == 2 && $age >= 5 ){ $img = '<img src="' . get_bloginfo( 'template_url' ) . '/img/woman_02.png" alt="女性">'; }
     $question_3 = $review['question3'] == 6 ? '-' : $review['question3'];
     $html .= <<<EOM
-    <article class="review">
+    <article class="review {$class}">
       <div class="review_header">
         <div class="review_header__img">{$img}</div>
         <div class="review_header__text">
@@ -160,20 +201,32 @@ function mvno_review( $shortname )
             <span class="age">{$review['age']}0代</span>
           </h3>
           <div class="review_header__score">
-            <p class="score"><i class="fa fa-jpy" aria-hidden="true"></i>料金 <span class="score__value">{$review['question1']}</span></p>
-            <p class="score"><i class="fa fa-wifi" aria-hidden="true"></i>通信 <span class="score__value">{$review['question2']}</span></p>
-            <p class="score"><i class="fa fa-phone" aria-hidden="true"></i>通話 <span class="score__value">$question_3</span></p>
-            <p class="score"><i class="fa fa-heart-o" aria-hidden="true"></i>サポート <span class="score__value">{$review['question4']}</span></p>
-            <p class="score"><i class="fa fa-bar-chart" aria-hidden="true"></i>全体的 <span class="score__value">{$review['question5']}</span></p>
+            <p class="score"><i class="fa fa-jpy fa-fw" aria-hidden="true"></i><span class="score__text">料金</span><span class="score__value">{$review['question1']}</span></p>
+            <p class="score"><i class="fa fa-wifi fa-fw" aria-hidden="true"></i><span class="score__text">通信</span><span class="score__value">{$review['question2']}</span></p>
+            <p class="score"><i class="fa fa-phone fa-fw" aria-hidden="true"></i><span class="score__text">通話</span><span class="score__value">{$question_3}</span></p>
+            <p class="score"><i class="fa fa-heart-o fa-fw" aria-hidden="true"></i><span class="score__text">サポート</span><span class="score__value">{$review['question4']}</span></p>
+            <p class="score"><i class="fa fa-bar-chart fa-fw" aria-hidden="true"></i><span class="score__text">全体的</span><span class="score__value">{$review['question5']}</span></p>
           </div>
         </div>
       </div>
-      <div class="review_comment">
-        <p>{$review['comment']}</p>
-      </div>
+      <p class="review_comment">
+        {$review['comment']}
+      </p>
     </article>
 EOM;
   }
+  return $html;
+}
+function mvno_button( $mvno )
+{
+  $href = get_bloginfo( 'url' ) . '/' . $mvno['shortname'];
+  $html = <<<EOM
+  <div class="mvno_button">
+    <button class="mvno_button__detail"><a href="{$href}">プラン・詳細ページ</a></button>
+    <button class="mvno_button__official">{$mvno['afi_txt']}</button>
+  </div>
+EOM;
+
   return $html;
 }
 function mobile_func( $atts )
