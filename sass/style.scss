@@ -50,7 +50,7 @@ strong{
 
 body{
   font-family: "メイリオ", Meiryo, "ヒラギノ角ゴ Pro W3", Hiragino Kaku Gothic Pro, "ＭＳ Ｐゴシック", sans-serifPT Sans Caption,Josefin Sans,"メイリオ", Meiryo, "ヒラギノ角ゴ Pro W3", Hiragino Kaku Gothic Pro, "ＭＳ Ｐゴシック", sans-serif;
-  line-height: 1.5rem;
+  line-height: 1.5;
 }
 p{
   margin-bottom: 2rem;
@@ -585,6 +585,10 @@ article.page{
 /*
  * mvno short_code
  */
+.mvno_s
+{
+  margin-bottom: 2rem;
+}
 .mvno_header{
   .mvno_header__img{
   }
@@ -723,6 +727,7 @@ article.page{
   border-radius: 2px;
   .review_header{
     display: flex;
+    align-items: center;
     margin-bottom: 0.5rem;
     padding-bottom: 0.5rem;
     border-bottom: 1px solid #ccc;
@@ -785,7 +790,9 @@ article.page{
     margin-bottom: 0.5rem;
     border-radius: 2px;
     a{
-      display: block;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       padding: 0.5rem 1rem;
       &:after{
         font-family: 'FontAwesome';
@@ -797,6 +804,12 @@ article.page{
   .mvno_button__detail{
     border: 1px solid #ccc;
     background-color: #fff;
+    a:before{
+      font-family: 'FontAwesome';
+      content: '\f044'; // fa-pencil-square-o
+      padding-right: 0.5rem;
+      font-size: 1.2rem;
+    }
     &:hover{ background-color: #eee; }
   }
   .mvno_button__official{
@@ -804,81 +817,16 @@ article.page{
     border: $color_sub;
     &:hover{ background-color: lighten($color_sub, 10%); }
     a{
-      color: #fff;
-    }
-  }
-}
-/*
- * mvno short_code
- */
-/*
-.mvno_info{
-  dl{
-    display: flex;
-    flex-wrap: wrap;
-    padding-left: 1rem;
-    font-size: 0.9rem;
-    dt{
-      width: 6rem;
-      font-weight: bold;
-    }
-    dd{
-      margin: 0;
-      padding-left: 1rem;
-      width: calc(100% - 6rem - 1rem);
-    }
-  }
-  ul{
-    padding-left: 1rem;
-    list-style: none;
-    li{
-      padding: 0.25rem 0;
-      .fa{
-        padding-right: 0.5rem;
-        font-size: 1.3rem;
-        color: $color_main;
-      }
-    }
-  }
-  table{
-    td{
-      white-space: nowrap;
-      text-align: center;
-    }
-  }
-  .mybtn{
-    p{
-      span{
-        display: block;
-        text-align: center;
-        &:after{
-          font-family: 'FontAwesome';
-          content: '\f063'; // fa-arrow-down
-          color: #666;
-          padding-right: 0.5rem;
-        }
-      }
-    }
-    a{
-      display: block;
-      margin: 0.5rem 1rem;
-      padding: 0.75rem 2rem;
-      border-radius: 5px;
-      text-align: center;
-      background-color: $color_sub;
-      color: #fff;
-      &:hover{
-        background-color: lighten($color_sub, 5%);
-      }
-      &:after{
+      &:before{
         font-family: 'FontAwesome';
-        content: '\f054'; // fa-chevron-right
-        padding-left: 0.5rem;
+        content: '\f015'; // fa-home
+        padding-right: 0.5rem;
+        font-size: 1.2rem;
       }
+      color: #fff;
     }
   }
 }
-*/
 /* for ipad */
 @include col-md{ 
   header,
@@ -1026,27 +974,84 @@ article.page{
       }
     }
   }
-  .mvno_info{
-    .row{
-      display: flex;
+  /* for short code */
+  .mvno_s{
+    h3{
+      margin-top: 3rem;
     }
-    .col-sm-5{
-      width: 20rem; 
-    }
-    .col-sm-7{
-      padding-left: 2rem;
+  }
+  .mvno_header{
+    display: flex;
+    &__text{
       flex: 1;
+      padding-left: 1rem;
     }
-    .mybtn{
-      p{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        span{
-          &:after{
-            content: '\f061'; // fa-arrow-right
-          }
+    .mvno_header__spec{
+      th, td{
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+        line-height: 1.5;
+      }
+      &_type{
+        // padding: 0.25rem 0;
+      }
+    }
+  }
+  .mvno_function{
+    li{
+      width: 6rem;
+      height: 3rem;
+      margin: 0 2px 2px 0;
+      font-size: 1rem;
+    }
+  }
+  .mvno_graph{
+    &__box{
+      display: flex;
+      margin-left: 3rem
+    }
+    &__total_box{
+      margin-left: 5rem;
+      .mvno_graph__scores{
+        display: block;
+        font-size: 1rem;
+        .score{
+          padding: 0.125rem 0;
+          &__text{ width: 6rem; }
         }
+      }
+    }
+  }
+  .review{
+    padding: 1rem;
+    .review_header{
+      .score{
+        &__text{
+          display: initial;
+          padding-right: 0.5rem;
+        }
+        &__value{
+          padding-right: 1.5rem;
+        }
+      }
+    }
+    .review_title{
+      padding-bottom: 0.25rem;
+    }
+    .review_comment{
+      font-size: 1rem;
+      line-height: 1.5em;
+    }
+  }
+  .mvno_button{
+    display: flex;
+    justify-content: space-around;
+    button{
+      margin: 0 1rem;
+      flex: 1;
+      border-radius: 3px;
+      a{
+        padding: 0.75rem 1rem;
       }
     }
   }

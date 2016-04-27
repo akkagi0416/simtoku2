@@ -35,6 +35,7 @@ function mvno_s_func( $atts )
   $mvno = $m->get_mvno( $shortname );
 
   $html  = '<section class="mvno_s">';
+  $html .= '<h3 class="mvno_title">' . $mvno['mvno'] . '</h3>';
   $html .= mvno_header( $mvno );
   $html .= mvno_function( $mvno );
   $html .= mvno_feature( $mvno );
@@ -49,7 +50,6 @@ function mvno_header( $mvno )
 {
   $html = <<<EOM
   <div class="mvno_header">
-    <h3 class="mvno_header__title">{$mvno['mvno']}</h3>
     <div class="mvno_header__img">
       {$mvno['afi_img']}
     </div>
@@ -126,50 +126,54 @@ function mvno_graph( $mvno )
   }
   $html = <<<EOM
   <div class="mvno_graph">
-    <h3 class="mvno_graph__title">ユーザー評価やレビュー</h3>
-    <canvas id="mvno_graph__{$mvno['shortname']}" width="256px" height="256px"></canvas>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.1.1/Chart.min.js"></script>
-    <script>
-      var data = {
-        labels: ["価格", "通信", "通話", "サポート", "満足度" ],
-        datasets: [
-          {
-            label:                "{$mvno['mvno']}",
-            fillColor:            "rgba(51, 122, 183, 0.2)",
-            strokeColor:          "rgba(51, 122, 183, 1.0)",
-            pointColor:           "rgba(51, 122, 183, 1.0)",
-            pointStrokeColor:     "#fff",
-            pointHighlightFill:   "rgba(51, 122, 183, 1.0)",
-            pointHighlightStroke: "rgba(51, 122, 183, 1.0)",
-            data: [ {$mvno['q1']}, {$mvno['q2']},{$mvno['q3']},{$mvno['q4']},{$mvno['q5']}]
-          },
-        ]
-      };
-      var option = {
-        scaleShowLabels: true,
-        scaleOverride: true,
-        scaleSteps: 5,
-        scaleStepWidth: 1,
-        scaleStartValue: 0,
-        pointLabelFontSize: 16,
-        angleLineColor: "rgba(0, 0, 0, 0.2)",
-        scaleLineColor: "rgba(0, 0, 0, 0.2)"
-      };
-      var ctx = document.getElementById('mvno_graph__{$mvno['shortname']}').getContext('2d');
-      var myRadar = new Chart(ctx).Radar(data, option);
-    </script>
-    <div class="mvno_graph__total">
-      <span class="mvno_graph__total_text">総合評価</span>
-      <span class="mvno_graph__total_value">{$mvno['average']}</span>
-      <span class="mvno_graph__total_stars">{$stars}</span>
-    </div>
-    <div class="mvno_graph__scores">
-      <p class="score"><i class="fa fa-jpy fa-fw" aria-hidden="true"></i><span class="score__text">料金</span><span class="score__value">{$mvno['q1']}</span></p>
-      <p class="score"><i class="fa fa-wifi fa-fw" aria-hidden="true"></i><span class="score__text">通信</span><span class="score__value">{$mvno['q2']}</span></p>
-      <p class="score"><i class="fa fa-phone fa-fw" aria-hidden="true"></i><span class="score__text">通話</span><span class="score__value">{$mvno['q3']}</span></p>
-      <p class="score"><i class="fa fa-heart-o fa-fw" aria-hidden="true"></i><span class="score__text">サポート</span><span class="score__value">{$mvno['q4']}</span></p>
-      <p class="score"><i class="fa fa-bar-chart fa-fw" aria-hidden="true"></i><span class="score__text">全体的</span><span class="score__value">{$mvno['q5']}</span></p>
-    </div>
+    <h3 class="mvno_graph__title">{$mvno['mvno']}のユーザー評価やレビュー</h3>
+    <div class="mvno_graph__box">
+      <canvas id="mvno_graph__{$mvno['shortname']}" width="256px" height="256px"></canvas>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.1.1/Chart.min.js"></script>
+      <script>
+        var data = {
+          labels: ["料金", "通信", "通話", "サポート", "満足度" ],
+          datasets: [
+            {
+              label:                "{$mvno['mvno']}",
+              fillColor:            "rgba(51, 122, 183, 0.2)",
+              strokeColor:          "rgba(51, 122, 183, 1.0)",
+              pointColor:           "rgba(51, 122, 183, 1.0)",
+              pointStrokeColor:     "#fff",
+              pointHighlightFill:   "rgba(51, 122, 183, 1.0)",
+              pointHighlightStroke: "rgba(51, 122, 183, 1.0)",
+              data: [ {$mvno['q1']}, {$mvno['q2']},{$mvno['q3']},{$mvno['q4']},{$mvno['q5']}]
+            },
+          ]
+        };
+        var option = {
+          scaleShowLabels: true,
+          scaleOverride: true,
+          scaleSteps: 5,
+          scaleStepWidth: 1,
+          scaleStartValue: 0,
+          pointLabelFontSize: 16,
+          angleLineColor: "rgba(0, 0, 0, 0.2)",
+          scaleLineColor: "rgba(0, 0, 0, 0.2)"
+        };
+        var ctx = document.getElementById('mvno_graph__{$mvno['shortname']}').getContext('2d');
+        var myRadar = new Chart(ctx).Radar(data, option);
+      </script>
+      <div class="mvno_graph__total_box">
+        <div class="mvno_graph__total">
+          <span class="mvno_graph__total_text">総合評価</span>
+          <span class="mvno_graph__total_value">{$mvno['average']}</span>
+          <span class="mvno_graph__total_stars">{$stars}</span>
+        </div>
+        <div class="mvno_graph__scores">
+          <p class="score"><i class="fa fa-jpy fa-fw" aria-hidden="true"></i><span class="score__text">料金</span><span class="score__value">{$mvno['q1']}</span></p>
+          <p class="score"><i class="fa fa-wifi fa-fw" aria-hidden="true"></i><span class="score__text">通信</span><span class="score__value">{$mvno['q2']}</span></p>
+          <p class="score"><i class="fa fa-phone fa-fw" aria-hidden="true"></i><span class="score__text">通話</span><span class="score__value">{$mvno['q3']}</span></p>
+          <p class="score"><i class="fa fa-heart-o fa-fw" aria-hidden="true"></i><span class="score__text">サポート</span><span class="score__value">{$mvno['q4']}</span></p>
+          <p class="score"><i class="fa fa-bar-chart fa-fw" aria-hidden="true"></i><span class="score__text">満足度</span><span class="score__value">{$mvno['q5']}</span></p>
+        </div>
+      </div>
+    </div><!-- //.mvno_graph__box -->
   </div>
 EOM;
 
@@ -185,6 +189,7 @@ function mvno_review( $shortname )
     $sex = $review['sex'];
     $age = $review['age'];
     $class = $sex == 1 ? 'man' : 'woman';
+    $href = get_bloginfo( 'url' ) . '/' . $shortname . '/';
     if( $sex == 1 && $age <  5 ){ $img = '<img src="' . get_bloginfo( 'template_url' ) . '/img/man_01.png" alt="男性">'; }
     if( $sex == 1 && $age >= 5 ){ $img = '<img src="' . get_bloginfo( 'template_url' ) . '/img/man_02.png" alt="男性">'; }
     if( $sex == 2 && $age <  5 ){ $img = '<img src="' . get_bloginfo( 'template_url' ) . '/img/woman_01.png" alt="女性">'; }
@@ -196,7 +201,7 @@ function mvno_review( $shortname )
         <div class="review_header__img">{$img}</div>
         <div class="review_header__text">
           <h3 class="review_title">
-            <span class="review_mvno">{$review['sim_text']}</span>
+            <a href="{$href}"><span class="review_mvno">{$review['sim_text']}</span></a>
             <span class="sex">{$review['sex_text']}</span>
             <span class="age">{$review['age']}0代</span>
           </h3>
@@ -205,7 +210,7 @@ function mvno_review( $shortname )
             <p class="score"><i class="fa fa-wifi fa-fw" aria-hidden="true"></i><span class="score__text">通信</span><span class="score__value">{$review['question2']}</span></p>
             <p class="score"><i class="fa fa-phone fa-fw" aria-hidden="true"></i><span class="score__text">通話</span><span class="score__value">{$question_3}</span></p>
             <p class="score"><i class="fa fa-heart-o fa-fw" aria-hidden="true"></i><span class="score__text">サポート</span><span class="score__value">{$review['question4']}</span></p>
-            <p class="score"><i class="fa fa-bar-chart fa-fw" aria-hidden="true"></i><span class="score__text">全体的</span><span class="score__value">{$review['question5']}</span></p>
+            <p class="score"><i class="fa fa-bar-chart fa-fw" aria-hidden="true"></i><span class="score__text">満足度</span><span class="score__value">{$review['question5']}</span></p>
           </div>
         </div>
       </div>
@@ -219,10 +224,23 @@ EOM;
 }
 function mvno_button( $mvno )
 {
+  // detail & official button
   $href = get_bloginfo( 'url' ) . '/' . $mvno['shortname'];
   $html = <<<EOM
   <div class="mvno_button">
     <button class="mvno_button__detail"><a href="{$href}">プラン・詳細ページ</a></button>
+    <button class="mvno_button__official">{$mvno['afi_txt']}</button>
+  </div>
+EOM;
+
+  return $html;
+}
+function mvno_button2( $mvno )
+{
+  // only official button
+  $href = get_bloginfo( 'url' ) . '/' . $mvno['shortname'];
+  $html = <<<EOM
+  <div class="mvno_button">
     <button class="mvno_button__official">{$mvno['afi_txt']}</button>
   </div>
 EOM;
