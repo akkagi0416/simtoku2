@@ -1029,10 +1029,9 @@ article.page{
     flex-wrap: wrap;
     // justify-content: space-around;
     justify-content: flex-start;
-    margin: 1rem 1%;
     .topic{
       width: 15rem;
-      margin: 1rem 0.25rem;
+      margin: 1rem 1%;
       border: 1px solid #ccc;
       border-radius: 3px;
       box-sizing: border-box;
