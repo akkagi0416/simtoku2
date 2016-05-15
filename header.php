@@ -42,9 +42,9 @@
     <nav>
     <?php
       $args = array(
-        'theme_location'  => 'nav2',
-        'container'       => false,
-        'items_wrap'      => '<ul>%3$s</ul>',
+        'menu'       => 'nav2',
+        'container'  => false,
+        'items_wrap' => '<ul>%3$s</ul>',
       );
       wp_nav_menu( $args );
     ?>
