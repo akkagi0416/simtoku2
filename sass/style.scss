@@ -601,6 +601,7 @@ article.page{
     margin-bottom: 1rem;
     th{
       white-space: nowrap;
+      font-weight: normal;
     }
     th, td{
       line-height: 1.2;
@@ -810,12 +811,15 @@ article.page{
       padding-right: 0.5rem;
       font-size: 1.2rem;
     }
-    &:hover{ background-color: #eee; }
+    &:hover{
+      border: 1px solid $color_sub;
+      // background-color: #f6f6f6;
+    }
   }
   .mvno_button__official{
     background-color: $color_sub;
     border: $color_sub;
-    &:hover{ background-color: lighten($color_sub, 10%); }
+    &:hover{ background-color: lighten($color_sub, 5%); }
     a{
       &:before{
         font-family: 'FontAwesome';
@@ -827,6 +831,99 @@ article.page{
     }
   }
 }
+.mvno_card{
+  // width: 10rem;
+  width: 100%;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  p{ margin: 0; }
+  .mvno_card__title{
+    margin: 0;
+    padding: 0.25rem;
+    justify-content: center;
+    background-color: $color_sub;
+  border: 1px solid $color_sub;
+    font-weight: normal;
+    color: #fff;
+    &:before{ display: none; }
+  }
+  .mvno_card__img{
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid #eee;
+    /* for triming */
+    height: 7rem;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:hover{
+      img{ opacity: 0.7 }
+    }
+  }
+  .mvno_card__catch{
+    padding: 0 1rem 0.5rem 1rem;
+    font-size: 0.8rem;
+    line-height: 1.2;
+  }
+  .mvno_card__feature{
+    margin: 0;
+    padding: 0.5rem 1rem;
+    list-style: none;
+    font-size: 0.9rem;
+  }
+  .mvno_card__list{
+    .fa{
+      color: $color_subsub;
+    }
+    .fa.fa-star, .fa.fa-star-o, .fa.fa-star-half-o{
+      color: $color_main;
+    }
+    &_text{
+      padding-right: 0.5rem;
+    }
+  }
+  .mvno_button{
+    button{
+      a{
+        // padding: 0.5rem 1rem;
+        padding: 0.5rem;
+        &:after{
+          padding-left: 0.5rem;
+        }
+      }
+    }
+    .mvno_button__detail a:before{ display: none; }
+  }
+}
+/* easy explai */
+.easy_explain{
+  p{
+    margin: 0;
+  }
+  text-align: center;
+  .easy_explain__box{
+    margin-bottom: 2rem;
+  }
+  .easy_explain__icon{
+    margin-bottom: 1rem;
+    .fa{
+      width: 3rem;
+      hegith: 3rem;
+      padding: 1.5rem;
+      font-size: 3rem;
+      line-height: 1;
+      border-radius: 100%;
+      // background-color: #f6f6f6;
+    }
+  }
+  .easy_explain__title{ font-weight: bold; }
+  .easy_explain__box:nth-child(1) .fa{ color: $color_main; border: 2px solid $color_main; }
+  .easy_explain__box:nth-child(2) .fa{ color: $color_sub;  border: 2px solid $color_sub; }
+  .easy_explain__box:nth-child(3) .fa{ color: $color_subsub; border: 2px solid $color_subsub;  }
+}
+
 /* for ipad */
 @include col-md{ 
   header,
@@ -981,6 +1078,7 @@ article.page{
     }
   }
   .mvno_header{
+    margin-bottom: 0.5rem;
     display: flex;
     &__text{
       flex: 1;
@@ -1053,6 +1151,30 @@ article.page{
       a{
         padding: 0.75rem 1rem;
       }
+    }
+  }
+  .mvno_cards{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  .mvno_card{
+    width: 30%;
+    margin: 1rem 1%;
+    .mvno_card__title{
+      text-align: center;
+    }
+    .mvno_card__catch{
+      height: 3rem;
+      line-height: 1.5;
+    }
+  }
+  .easy_explain{
+    display: flex;
+    justify-content: space-around;
+    .easy_explain__box{
+      width: 30%;
+      padding: 0 1rem;
     }
   }
 }

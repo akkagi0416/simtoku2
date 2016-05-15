@@ -73,11 +73,11 @@ function relation( $post ){
         $thumbnail = get_the_post_thumbnail( $my_query->ID, 'thumbnail' );
         $html .= make_topic( '', $title, $permalink, $datetime, $thumbnail );
       }
+      echo $html;
     }
   }
 
   wp_reset_postdata();
-  echo $html;
 }
 /*
  * sidebar

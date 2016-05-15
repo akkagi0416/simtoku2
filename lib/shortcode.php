@@ -247,6 +247,57 @@ EOM;
 
   return $html;
 }
+
+function mvno_card_func( $atts )
+{
+  extract( shortcode_atts( array(
+    'shortname' => 'iijmio',
+  ), $atts ) );
+
+  $m = new Mvno();
+  $mvno = $m->get_mvno( $shortname );
+  $img  = get_bloginfo( 'template_url' ) . '/img/logo_' . $mvno['shortname'] . '.jpg';
+  $href = get_bloginfo( 'url' ) . '/' . $mvno['shortname'];
+  $integer_part = floor( $mvno['average'] );
+  $round_part   = $mvno['average'] - $integer_part;
+  $stars = '';
+  for( $i = 0; $i < $integer_part; $i++ ){
+    $stars .= '<i class="fa fa-star" aria-hidden="true"></i>';
+  }
+  if( $round_part > 0.66 ){
+    $stars .= '<i class="fa fa-star" aria-hidden="true"></i>';
+  }elseif( $round_part > 0.33 ){
+    $stars .= '<i class="fa fa-star-half-o" aria-hidden="true"></i>';
+  }else{
+    $stars .= '<i class="fa fa-star-o" aria-hidden="true"></i>';
+  }
+  for( $i = 0; $i < 5 - $integer_part - 1; $i++ ){
+    $stars .= '<i class="fa fa-star-o-" aria-hidden="true"></i>';
+  }
+  $html = <<<EOM
+  <article class="mvno_card">
+    <h3 class="mvno_card__title">{$mvno['mvno']}</h3>
+    <div class="mvno_card__img">
+      <a href="{$href}">
+        <img src="{$img}" alt="{$mvno['mvno']}">
+      </a>
+    </div>
+    <p class="mvno_card__catch">{$mvno['catch_copy']}</p>
+    <ul class="mvno_card__feature">
+      <li class="mvno_card__list"><i class="fa fa-jpy fa-fw" aria-hidden="true"></i><span class="mvno_card__list_text">月額</span>{$mvno['cost_min']}円～</li>
+      <li class="mvno_card__list"><i class="fa fa-bar-chart fa-fw" aria-hidden="true"></i><span class="mvno_card__list_text">評価</span>{$stars}</li>
+    </ul>
+    <div class="mvno_button">
+      <button class="mvno_button__detail">
+        <a href="{$href}">詳細ページ</a>
+      </button>
+    </div>
+  </article>
+EOM;
+
+  return $html;
+}
+
 function mobile_func( $atts )
 {
     extract( shortcode_atts( array(
@@ -294,7 +345,9 @@ EOM;
     return $html;
 }
 
-add_shortcode( 'mvno_s', 'mvno_s_func' );
-add_shortcode( 'mvno_txt', 'mvno_txt_func' );
-add_shortcode( 'mvno_img', 'mvno_img_func' );
-add_shortcode( 'mobile', 'mobile_func' );
+add_shortcode( 'mvno_s',    'mvno_s_func' );
+add_shortcode( 'mvno_txt',  'mvno_txt_func' );
+add_shortcode( 'mvno_img',  'mvno_img_func' );
+add_shortcode( 'mvno_card', 'mvno_card_func' );
+
+add_shortcode( 'mobile',    'mobile_func' );
