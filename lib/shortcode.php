@@ -46,6 +46,38 @@ function mvno_s_func( $atts )
 
   return $html;
 }
+function mvno_top_func( $atts )
+{
+  extract( shortcode_atts( array(
+    'shortname' => 'iijmio',
+  ), $atts ) );
+  $m = new Mvno();
+  $mvno = $m->get_mvno( $shortname );
+
+  $html  = '<h3 class="mvno_title">' . $mvno['mvno'] . '</h3>';
+  $html .= mvno_header( $mvno );
+  $html .= mvno_function( $mvno );
+  $html .= mvno_feature( $mvno );
+  $html .= mvno_button2( $mvno );
+
+  return $html;
+}
+function mvno_say_func( $atts )
+{
+  extract( shortcode_atts( array(
+    'shortname' => 'iijmio',
+  ), $atts ) );
+  $m = new Mvno();
+  $mvno = $m->get_mvno( $shortname );
+
+  $html  = mvno_graph( $mvno );
+  $html .= '<div class="reviews">';
+  $html .= mvno_review( $shortname, 100 );  // すべてのレビュー(100ならすべて取れる前提)
+  $html .= '<button class="reviews_open">他の『' . $mvno['mvno'] . '』のレビューを見る/閉じる</button>';
+  $html .= '</div>';
+
+  return $html;
+}
 function mvno_header( $mvno )
 {
   $html = <<<EOM
@@ -179,10 +211,10 @@ EOM;
 
   return $html;
 }
-function mvno_review( $shortname )
+function mvno_review( $shortname, $count = 2 )
 {
   $m = new Mvno();
-  $reviews = $m->get_review( $shortname );
+  $reviews = $m->get_review( $shortname, $count );
 
   $html = '';
   foreach( $reviews as $review ){
@@ -298,6 +330,49 @@ EOM;
   return $html;
 }
 
+function mvno_plan_func( $atts )
+{
+  extract( shortcode_atts( array(
+    'shortname' => 'iijmio',
+  ), $atts ) );
+
+  $m = new Mvno();
+  $plans = $m->get_plan( $shortname );
+  $mvno  = $m->get_mvno( $shortname );
+  $html = <<<EOM
+    <div class="mvno_plan">
+      <h3 class="mvno_plan__title">{$mvno['mvno']}のプラン一覧</h3>
+      <table>
+        <tr>
+          <th>プラン名</th>
+          <th>データSIM</th>
+          <th>通話SIM</th>
+          <th>月額料金</th>
+          <th>データ容量</th>
+          <th>最大通信速度</th>
+        </tr>
+EOM;
+  foreach( $plans as $plan ){
+    if( $plan['plan_basic'] == 1 ){
+      $judge_data  = $plan['sim_data']  == 1 ? 'o' : '&nbsp;';
+      $judge_voice = $plan['sim_voice'] == 1 ? 'o' : '&nbsp;';
+      // $constract_period = $plan['constract_period'] != null ? $plan['constract_period'] . 'か月' : '&nbsp;';
+      $html .= <<<EOM
+        <tr>
+          <td>{$plan['plan_name']}</td>
+          <td>{$judge_data}</td>
+          <td>{$judge_voice}</td>
+          <td>{$plan['cost']}円</td>
+          <td>{$plan['data_size']}GB</td>
+          <td>{$plan['speed_max']}Mbps</td>
+        </tr>
+EOM;
+    }
+  }
+  $html .= '</table></div>';
+  return $html;
+}
+
 function mobile_func( $atts )
 {
     extract( shortcode_atts( array(
@@ -346,8 +421,11 @@ EOM;
 }
 
 add_shortcode( 'mvno_s',    'mvno_s_func' );
+add_shortcode( 'mvno_top',  'mvno_top_func' );
+add_shortcode( 'mvno_say',  'mvno_say_func' );
 add_shortcode( 'mvno_txt',  'mvno_txt_func' );
 add_shortcode( 'mvno_img',  'mvno_img_func' );
 add_shortcode( 'mvno_card', 'mvno_card_func' );
+add_shortcode( 'mvno_plan', 'mvno_plan_func' );
 
 add_shortcode( 'mobile',    'mobile_func' );

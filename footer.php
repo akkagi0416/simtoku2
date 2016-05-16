@@ -66,6 +66,11 @@ jQuery(function(){
       jQuery('.to_top').fadeOut();
     }
   });
+
+  // reviews open/close
+  jQuery('.reviews button').click(function(){
+    jQuery('.reviews .review').toggle('slow');
+  });
 });
 </script>
 </body>

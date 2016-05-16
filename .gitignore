@@ -2,3 +2,7 @@
 *png
 *db
 *csv
+.sass-cache/
+data/
+node_modules/
+style.css.map
