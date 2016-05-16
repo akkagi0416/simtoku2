@@ -372,6 +372,34 @@ EOM;
   $html .= '</table></div>';
   return $html;
 }
+function mvno_close_func( $atts )
+{
+  extract( shortcode_atts( array(
+    'shortname' => 'iijmio',
+  ), $atts ) );
+
+  $m = new Mvno();
+  $mvno  = $m->get_mvno( $shortname );
+  $img  = get_bloginfo( 'template_url' ) . '/img/logo_' . $mvno['shortname'] . '.jpg';
+  $html = <<<EOM
+  <div class="mvno_close">
+    <div class="mvno_close__img">
+      <img src="{$img}" alt="{$mvno['mvno']}">
+      <p class="mvno_close__catch">{$mvno['catch_copy']}</p>
+    </div>
+    <div class="mvno_close__text">
+      <p>公式ページはこちら</p>
+      <div class="mvno_button">
+        <button class="mvno_button__official">
+          {$mvno['afi_txt']}
+        </button>
+      </div>
+    </div>
+  </div>
+EOM;
+
+  return $html;
+}
 
 function mobile_func( $atts )
 {
@@ -420,12 +448,13 @@ EOM;
     return $html;
 }
 
-add_shortcode( 'mvno_s',    'mvno_s_func' );
-add_shortcode( 'mvno_top',  'mvno_top_func' );
-add_shortcode( 'mvno_say',  'mvno_say_func' );
-add_shortcode( 'mvno_txt',  'mvno_txt_func' );
-add_shortcode( 'mvno_img',  'mvno_img_func' );
-add_shortcode( 'mvno_card', 'mvno_card_func' );
-add_shortcode( 'mvno_plan', 'mvno_plan_func' );
+add_shortcode( 'mvno_s',     'mvno_s_func' );
+add_shortcode( 'mvno_top',   'mvno_top_func' );
+add_shortcode( 'mvno_say',   'mvno_say_func' );
+add_shortcode( 'mvno_close', 'mvno_close_func' );
+add_shortcode( 'mvno_txt',   'mvno_txt_func' );
+add_shortcode( 'mvno_img',   'mvno_img_func' );
+add_shortcode( 'mvno_card',  'mvno_card_func' );
+add_shortcode( 'mvno_plan',  'mvno_plan_func' );
 
 add_shortcode( 'mobile',    'mobile_func' );

@@ -1031,6 +1031,31 @@ article.page {
 .mvno_plan td {
   text-align: center; }
 
+.mvno_close .mvno_close__img {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center; }
+  .mvno_close .mvno_close__img img {
+    width: 8rem; }
+
+.mvno_close .mvno_close__catch {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.2; }
+
+.mvno_close .mvno_close__text p {
+  margin: 0.5rem;
+  text-align: center; }
+  .mvno_close .mvno_close__text p:after {
+    font-family: 'FontAwesome';
+    content: '\f063';
+    padding-left: 0.5rem; }
+
 .mvno_card {
   width: 100%;
   margin-bottom: 1rem;

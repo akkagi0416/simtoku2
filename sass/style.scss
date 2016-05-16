@@ -867,6 +867,31 @@ article.page{
     text-align: center;
   }
 }
+.mvno_close{
+  .mvno_close__img{
+    display: flex;
+    align-items: center;
+    img{
+      width: 8rem;
+    }
+  }
+  .mvno_close__catch{
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.2;
+  }
+  .mvno_close__text{
+    p{
+      margin: 0.5rem;
+      text-align: center;
+      &:after{
+        font-family: 'FontAwesome';
+        content: '\f063'; // fa-arrow-down
+        padding-left: 0.5rem;
+      }
+    }
+  }
+}
 .mvno_card{
   // width: 10rem;
   width: 100%;
