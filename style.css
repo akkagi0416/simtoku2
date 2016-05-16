@@ -902,6 +902,9 @@ article.page {
 .reviews .review:nth-of-type(2) {
   display: block; }
 
+.reviews .review_open {
+  display: block; }
+
 .reviews button {
   padding: 0.5rem 1rem;
   background-color: #fff;
@@ -1310,7 +1313,7 @@ article.page {
       line-height: 1.5; }
   .mvno_function li {
     width: 6rem;
-    height: 3rem;
+    height: 2.5rem;
     margin: 0 2px 2px 0;
     font-size: 1rem; }
   .mvno_graph__box {
@@ -1357,6 +1360,21 @@ article.page {
       border-radius: 3px; }
       .mvno_button button a {
         padding: 0.75rem 1rem; }
+  .mvno_close {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center; }
+    .mvno_close .mvno_close__img img {
+      width: auto; }
+    .mvno_close .mvno_close__text {
+      padding-left: 2rem; }
+    .mvno_close .mvno_close__catch {
+      display: none; }
   .mvno_cards {
     display: -webkit-box;
     display: -webkit-flex;

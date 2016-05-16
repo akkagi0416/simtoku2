@@ -69,7 +69,12 @@ jQuery(function(){
 
   // reviews open/close
   jQuery('.reviews button').click(function(){
-    jQuery('.reviews .review').toggle('slow');
+    // jQuery('.reviews .review').toggle('slow');
+    if(jQuery('.reviews .review').hasClass('review_open')){
+      jQuery('.reviews .review').removeClass('review_open');
+    }else{
+      jQuery('.reviews .review').addClass('review_open');
+    }
   });
 });
 </script>
