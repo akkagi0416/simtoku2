@@ -50,7 +50,7 @@ strong{
 
 body{
   font-family: "メイリオ", Meiryo, "ヒラギノ角ゴ Pro W3", Hiragino Kaku Gothic Pro, "ＭＳ Ｐゴシック", sans-serifPT Sans Caption,Josefin Sans,"メイリオ", Meiryo, "ヒラギノ角ゴ Pro W3", Hiragino Kaku Gothic Pro, "ＭＳ Ｐゴシック", sans-serif;
-  line-height: 1.5;
+  line-height: 1.6;
   color: #333;
 }
 p{
@@ -425,6 +425,10 @@ article.page{
     position: relative;
     width: 100%;
     padding: 75% 0 0 0;
+    // padding-bottom: 56.25%;
+    // padding-top: 30px;
+    // height: 0;
+    // overflow: hidden;
     iframe{
       position: absolute;
       top: 0;
@@ -1188,6 +1192,9 @@ article.page{
   .bread_crumb,
   #contents{
     max-width: 61rem;
+  }
+  main{
+    max-width: 45rem;
   }
 }
 

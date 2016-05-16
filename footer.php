@@ -46,8 +46,11 @@ jQuery(function(){
   jQuery('iframe').each(function(){
     if( jQuery(this).parent('div.iframe-responsive').length ){
     }else{
-      // div.iframe-responsiveで囲まれていなければ囲う
-      jQuery(this).wrap('<div class="iframe-responsive"></div>');
+      if(!jQuery(this).hasClass('not_responsive')){ 
+        // div.iframe-responsiveで囲まれていない
+        // not_responsiveクラスでない(responsiveさせないためのクラス)
+        jQuery(this).wrap('<div class="iframe-responsive"></div>');
+      }
     }
   });
   
