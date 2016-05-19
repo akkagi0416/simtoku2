@@ -76,6 +76,30 @@ jQuery(function(){
       jQuery('.reviews .review').addClass('review_open');
     }
   });
+
+  // search
+  jQuery('form').on('change', function(){
+    var param = jQuery(this).serialize();
+    console.log(param);
+    jQuery.ajax({
+      type: 'GET',
+      url: ajax_url,
+      data: {
+        'action': 'search_count',
+        'param': param,
+      },
+      success: function(response){
+        // 検索結果の件数をカウントアップ
+        jQuery({count: 0}).animate({count: response}, {
+          duration: 500,
+          easing: 'linear',
+          progress: function(){ jQuery('.search .count span').text(Math.ceil(this.count)); }
+        });
+        // jQuery('.search .count span').text(response);
+      }
+    });
+    return false;
+  });
 });
 </script>
 </body>

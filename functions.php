@@ -8,6 +8,7 @@ add_theme_support( 'post-thumbnails' );
 require_once dirname( __FILE__ ) . '/lib/db.php';       // mvno関連のデータベース操作
 require_once dirname( __FILE__ ) . '/lib/shortcode.php';    // shortcode集
 // require_once dirname( __FILE__ ) . '/lib/mobile.php';       // mobile関連のデータベース操作
+require_once dirname( __FILE__ ) . '/lib/ajax.php';    // ajax for wordpress
 
 // wp_nav_menu remove id, class
 add_filter( 'nav_menu_css_class', 'remove_class', 100, 2 );

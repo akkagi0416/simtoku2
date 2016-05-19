@@ -63,10 +63,15 @@ class Mvno
     }
     function get_review( $shortname, $count = 2 )
     {
-        $sql = 'SELECT * FROM reviews WHERE shortname = :shortname ORDER BY RANDOM() LIMIT :count';
-        $stmt = $this->db->prepare( $sql );
-        $stmt->bindValue( ':shortname', $shortname, PDO::PARAM_STR );
-        $stmt->bindValue( ':count', $count, PDO::PARAM_STR );
+        if( $shortname == 'all' ){
+          $sql = 'SELECT * FROM reviews ORDER BY RANDOM()';
+          $stmt = $this->db->prepare( $sql );
+        }else{
+          $sql = 'SELECT * FROM reviews WHERE shortname = :shortname ORDER BY RANDOM() LIMIT :count';
+          $stmt = $this->db->prepare( $sql );
+          $stmt->bindValue( ':shortname', $shortname, PDO::PARAM_STR );
+          $stmt->bindValue( ':count', $count, PDO::PARAM_STR );
+        }
         
         try{
             $stmt->execute();
@@ -91,6 +96,19 @@ class Mvno
             // $results = $stmt->fetchAll( PDO::FETCH_ASSOC );
         }catch( PDOException $e ){
             die( 'get_mobile error' . $e->getMessage() );
+        }
+
+        return $result;
+    }
+    function get_data_by_sql( $sql )
+    {
+        $stmt = $this->db->prepare( $sql );
+
+        try{
+            $stmt->execute();
+            $result = $stmt->fetchAll( PDO::FETCH_ASSOC );
+        }catch( PDOException $e ){
+            die( 'get_data_by_sql error' . $e->getMessage() );
         }
 
         return $result;

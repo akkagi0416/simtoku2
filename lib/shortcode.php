@@ -400,6 +400,12 @@ EOM;
 
   return $html;
 }
+function mvno_reviews_func()
+{
+  $html = mvno_review( 'all' );
+
+  return $html;
+}
 
 function mobile_func( $atts )
 {
@@ -448,13 +454,14 @@ EOM;
     return $html;
 }
 
-add_shortcode( 'mvno_s',     'mvno_s_func' );
-add_shortcode( 'mvno_top',   'mvno_top_func' );
-add_shortcode( 'mvno_say',   'mvno_say_func' );
-add_shortcode( 'mvno_close', 'mvno_close_func' );
-add_shortcode( 'mvno_txt',   'mvno_txt_func' );
-add_shortcode( 'mvno_img',   'mvno_img_func' );
-add_shortcode( 'mvno_card',  'mvno_card_func' );
-add_shortcode( 'mvno_plan',  'mvno_plan_func' );
+add_shortcode( 'mvno_s',       'mvno_s_func' );
+add_shortcode( 'mvno_top',     'mvno_top_func' );
+add_shortcode( 'mvno_say',     'mvno_say_func' );
+add_shortcode( 'mvno_close',   'mvno_close_func' );
+add_shortcode( 'mvno_txt',     'mvno_txt_func' );
+add_shortcode( 'mvno_img',     'mvno_img_func' );
+add_shortcode( 'mvno_card',    'mvno_card_func' );
+add_shortcode( 'mvno_plan',    'mvno_plan_func' );
+add_shortcode( 'mvno_reviews', 'mvno_reviews_func' );
 
 add_shortcode( 'mobile',    'mobile_func' );
