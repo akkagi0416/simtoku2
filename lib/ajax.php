@@ -62,14 +62,14 @@ function make_sql_where( $serialize )
   }
   if( isset( $params['sim_option'] ) ){
     foreach( $params['sim_option'] as $sim_option ){
-      if( $sim_option == 'is_beginner'       ){ $where .= ' AND is_beginner       = 1'; }
-      if( $sim_option == 'is_voice_discount' ){ $where .= ' AND is_voice_discount = 1'; }
-      if( $sim_option == 'is_same_day_home'  ){ $where .= ' AND is_same_day_home  = 1'; }
-      if( $sim_option == 'is_carry_over'     ){ $where .= ' AND is_carry_over     = 1'; }
-      if( $sim_option == 'is_onoff'          ){ $where .= ' AND is_onoff          = 1'; }
-      if( $sim_option == 'is_wifi'           ){ $where .= ' AND is_wifi           = 1'; }
-      if( $sim_option == 'is_free'           ){ $where .= ' AND is_free           = 1'; }
-      if( $sim_option == 'is_point'          ){ $where .= ' AND is_point          = 1'; }
+      if( $sim_option == 'is_beginner'       ){ $where .= ' AND p.is_beginner       = 1'; }
+      if( $sim_option == 'is_voice_discount' ){ $where .= ' AND p.is_voice_discount = 1'; }
+      if( $sim_option == 'is_same_day_home'  ){ $where .= ' AND p.is_same_day_home  = 1'; }
+      if( $sim_option == 'is_carry_over'     ){ $where .= ' AND p.is_carry_over     = 1'; }
+      if( $sim_option == 'is_onoff'          ){ $where .= ' AND p.is_onoff          = 1'; }
+      if( $sim_option == 'is_wifi'           ){ $where .= ' AND p.is_wifi           = 1'; }
+      if( $sim_option == 'is_free'           ){ $where .= ' AND p.is_free           = 1'; }
+      if( $sim_option == 'is_point'          ){ $where .= ' AND p.is_point          = 1'; }
     }
   }
 

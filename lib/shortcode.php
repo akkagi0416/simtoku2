@@ -454,6 +454,128 @@ EOM;
     return $html;
 }
 
+function mvno_search_func()
+{
+
+  $action_url = get_bloginfo( 'url' ) . '/search';
+
+  $html = <<<EOM
+    <section class="search">
+      <h3>格安SIMの簡単検索・比較</h3>
+      <p class="count"><span>0</span>件</p>
+      <form action="{$action_url}" method="GET">
+        <dl class="search_type">
+          <dt>種類</dt>
+          <dd>
+            <label for="sim_type_1"><input type="checkbox" id="sim_type_1" name="sim_type[]" value="1">データSIM</label>
+            <label for="sim_type_2"><input type="checkbox" id="sim_type_2" name="sim_type[]" value="2">SMS付SIM</label>
+            <label for="sim_type_3"><input type="checkbox" id="sim_type_3" name="sim_type[]" value="3">通話SIM</label>
+          </dd>
+        </dl>
+        <dl class="search_size">
+          <dt>データ容量</dt>
+          <dd>
+            <select id="" name="sim_size_min">
+              <option value=""></option>
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="15">15</option>
+              <option value="20">20</option>
+            </select>GB～
+            <select id="" name="sim_size_max">
+              <option value=""></option>
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="15">15</option>
+              <option value="20">20</option>
+            </select>GB
+          </dd>
+        </dl>
+        <dl class="search_cost">
+          <dt>月額料金</dt>
+          <dd>
+            <select id="" name="sim_cost_min">
+              <option value=""></option>
+              <option value="0">0</option>
+              <option value="500">500</option>
+              <option value="1000">1000</option>
+              <option value="2000">2000</option>
+              <option value="3000">3000</option>
+              <option value="4000">4000</option>
+              <option value="5000">5000</option>
+              <option value="6000">6000</option>
+              <option value="7000">7000</option>
+            </select>円～
+            <select id="" name="sim_cost_max">
+              <option value=""></option>
+              <option value="0">0</option>
+              <option value="500">500</option>
+              <option value="1000">1000</option>
+              <option value="2000">2000</option>
+              <option value="3000">3000</option>
+              <option value="4000">4000</option>
+              <option value="5000">5000</option>
+              <option value="6000">6000</option>
+              <option value="7000">7000</option>
+            </select>円
+          </dd>
+        </dl>
+        <dl class="search_mvno">
+          <dt>格安SIM</dt>
+          <dd>
+            <label for="sim_mvno_1"><input type="checkbox" id="sim_mvno_1" name="sim_mvno[]" value="1">OCN モバイル ONE</label>
+            <label for="sim_mvno_2"><input type="checkbox" id="sim_mvno_2" name="sim_mvno[]" value="2">IIJmio</label>
+            <label for="sim_mvno_3"><input type="checkbox" id="sim_mvno_3" name="sim_mvno[]" value="3">DMM mobile</label>
+            <label for="sim_mvno_4"><input type="checkbox" id="sim_mvno_4" name="sim_mvno[]" value="4">U-mobile</label>
+            <label for="sim_mvno_5"><input type="checkbox" id="sim_mvno_5" name="sim_mvno[]" value="5">楽天モバイル</label>
+            <label for="sim_mvno_6"><input type="checkbox" id="sim_mvno_6" name="sim_mvno[]" value="6">BIGLOBE</label>
+            <label for="sim_mvno_7"><input type="checkbox" id="sim_mvno_7" name="sim_mvno[]" value="7">mineo</label>
+            <label for="sim_mvno_8"><input type="checkbox" id="sim_mvno_8" name="sim_mvno[]" value="8">NifMo</label>
+          </dd>
+        </dl>
+        <dl class="search_option">
+          <dt>こだわり</dt>
+          <dd>
+            <label for="sim_option_1"><input  type="checkbox" id="sim_option_1"  name="sim_option[]" value="is_beginner">初心者向け</label>
+            <label for="sim_option_2"><input  type="checkbox" id="sim_option_2"  name="sim_option[]" value="is_voice_discount">通話割引</label>
+            <label for="sim_option_3"><input  type="checkbox" id="sim_option_3"  name="sim_option[]" value="is_same_day_home">自宅で即日開通</label>
+            <label for="sim_option_4"><input  type="checkbox" id="sim_option_4"  name="sim_option[]" value="is_carry_over">データ繰越</label>
+            <label for="sim_option_5"><input  type="checkbox" id="sim_option_5"  name="sim_option[]" value="is_onoff">高速通信ON/OFF</label>
+            <label for="sim_option_6"><input  type="checkbox" id="sim_option_6"  name="sim_option[]" value="is_no_limit">通信制限なし</label>
+            <label for="sim_option_7"><input  type="checkbox" id="sim_option_7"  name="sim_option[]" value="is_share">シェアプラン</label>
+            <label for="sim_option_8"><input  type="checkbox" id="sim_option_8"  name="sim_option[]" value="is_wifi">WiFiスポット</label>
+            <label for="sim_option_9"><input  type="checkbox" id="sim_option_9"  name="sim_option[]" value="is_free">使い放題</label>
+            <label for="sim_option_10"><input type="checkbox" id="sim_option_10" name="sim_option[]" value="is_point">ポイント</label>
+            <label for="sim_option_11"><input type="checkbox" id="sim_option_11" name="sim_option[]" value="is_docomo">docomo回線</label>
+            <label for="sim_option_12"><input type="checkbox" id="sim_option_12" name="sim_option[]" value="is_au">au回線</label>
+          </dd>
+        </dl>
+        <button type="submit" value="1" name="submit">この条件で検索</button>
+      </form>
+    </section><!-- //.search -->
+EOM;
+
+  return $html;
+}
+
 add_shortcode( 'mvno_s',       'mvno_s_func' );
 add_shortcode( 'mvno_top',     'mvno_top_func' );
 add_shortcode( 'mvno_say',     'mvno_say_func' );
@@ -463,5 +585,6 @@ add_shortcode( 'mvno_img',     'mvno_img_func' );
 add_shortcode( 'mvno_card',    'mvno_card_func' );
 add_shortcode( 'mvno_plan',    'mvno_plan_func' );
 add_shortcode( 'mvno_reviews', 'mvno_reviews_func' );
+add_shortcode( 'mvno_search',  'mvno_search_func' );
 
 add_shortcode( 'mobile',    'mobile_func' );
