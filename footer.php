@@ -78,29 +78,59 @@ jQuery(function(){
   });
 
   // search
-  jQuery('form').on('change', function(){
-    var param = jQuery(this).serialize();
-    console.log(param);
-    jQuery.ajax({
-      type: 'GET',
-      url: ajax_url,
-      data: {
-        'action': 'search_count',
-        'param': param,
-      },
-      success: function(response){
-        // 検索結果の件数をカウントアップ
-        jQuery({count: 0}).animate({count: response}, {
-          duration: 500,
-          easing: 'linear',
-          progress: function(){ jQuery('.search .count span').text(Math.ceil(this.count)); }
-        });
-        // jQuery('.search .count span').text(response);
-      }
-    });
+  countup();
+  jQuery('.search form').on('change', function(){
+    countup();
     return false;
   });
+  jQuery('.search .search_detail__open').click(function(){
+    jQuery(this).toggle();
+    jQuery('.search_detail__close').toggle();
+    jQuery('.search .search_mvno').slideToggle();
+    jQuery('.search .search_option').slideToggle();
+    return false; // イベントをformまで伝搬させないため
+  });
+  jQuery('.search .search_detail__close').click(function(){
+    jQuery(this).toggle();
+    jQuery('.search_detail__open').toggle();
+    jQuery('.search .search_mvno').slideToggle();
+    jQuery('.search .search_option').slideToggle();
+    return false; // イベントをformまで伝搬させないため
+  });
+  // check button
+  jQuery("input[type='checkbox']").change(function(){
+    if(jQuery(this).is(':checked')){
+      jQuery(this).parent().addClass('checked');
+    }else{
+      jQuery(this).parent().removeClass('checked');
+    }
+  });
 });
+function countup(number)
+{
+  var param = jQuery('.search form').serialize();
+  console.log(param);
+  jQuery.ajax({
+    type: 'GET',
+    url: ajax_url,
+    data: {
+      'action': 'search_count',
+      'param': param,
+    },
+    success: function(response){
+      // 検索結果の件数をカウントアップ
+      jQuery({count: 0}).animate({count: response}, {
+        duration: 500,
+        easing: 'linear',
+        progress: function(){
+          jQuery('.search .count span').text(Math.ceil(this.count));
+          jQuery('.search button span').text(Math.ceil(this.count));
+        }
+      });
+      // jQuery('.search .count span').text(response);
+    }
+  });
+}
 </script>
 </body>
 </html>

@@ -961,6 +961,105 @@ article.page{
     .mvno_button__detail a:before{ display: none; }
   }
 }
+
+.search{
+  .count{
+    padding-left: 1rem;
+    .fa{
+      padding-right: 0.5rem;
+      font-size: 1.2rem;
+    }
+    margin: 0;
+    span{
+      padding-right: 0.5rem;
+      color: $color_subsub;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+  }
+  dl{
+    margin: 0;
+    padding: 0.25rem 0.5rem;
+    background-color: #f6f6f6;
+    border-bottom: 2px solid #fff;
+    border-radius: 2px;
+  }
+  dt{
+    padding: 0.25rem 0.25rem;
+    font-size: 0.9rem;
+    font-weight: bold;
+  }
+  dd{
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    font-size: 0.8rem;
+    label{
+      width: 30%;
+      padding: 0 1%;
+      &.checked{
+        color: $color_subsub;
+      }
+    }
+  }
+  input[type="checkbox"]{
+    margin-right: 0.125rem;
+  }
+  .search_size dd,
+  .search_cost dd{
+    font-size: 0.9rem;
+  }
+  .search_mvno,
+  .search_option{
+    display: none;
+    label{
+      padding-bottom: 0.25rem;
+    }
+  }
+  .search_detail__close{
+    display: none;
+  }
+  button{
+    width: calc(100% - 2rem);
+    margin: 0.25rem 1rem;
+    padding: 0.5rem 1rem;
+  }
+  .search_detail__open,
+  .search_detail__close{
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background-color: #fff;
+    font-size: 0.9rem;
+    color: $color_sub;
+    .fa{
+      padding-left: 0.5rem;
+      color: $color_sub;
+    }
+  }
+  .search_button{
+    margin-bottom: 1rem;
+    background-color: $color_sub;
+    border: 1px solid $color_sub;
+    border-radius: 3px;
+    color: #fff;
+    .fa-search{
+      padding-right: 0.5rem;
+      font-size: 1.2rem;
+      color: #fff;
+    }
+    .fa-chevron-right{
+      padding-left: 1rem;
+      color: #fff;
+    }
+  }
+  .unit{
+    padding: 0 0.5rem;
+  }
+  .between{
+    padding-right: 0.5rem;
+  }
+}
 /* easy explain */
 .easy_explain{
   p{
@@ -1245,6 +1344,37 @@ article.page{
     .mvno_card__catch{
       height: 3rem;
       line-height: 1.5;
+    }
+  }
+  .search{
+    dl{
+      display: flex;
+      padding: 0.5rem 1rem;
+      dt{
+        width: 6rem;
+        padding: 0.5rem 0.5rem;
+        font-size: 1rem;
+      }
+      dd{
+        flex: 1;
+        padding: 0.5rem 0.5rem;
+        font-size: 1rem;
+      }
+    }
+    input[type="checkbox"]{
+      margin-right: 0.25rem;
+    }
+    .search_mvno label,
+    .search_option label{
+      padding-bottom: 0.5rem;
+    }
+    button{
+      width: 45%;
+      line-height: 1.8rem;
+    }
+    .search_detail__open,
+    .search_detail__close{
+      font-size: 1rem;
     }
   }
   .easy_explain{

@@ -1122,6 +1122,104 @@ article.page {
   .mvno_card .mvno_button .mvno_button__detail a:before {
     display: none; }
 
+.search .count {
+  padding-left: 1rem;
+  margin: 0; }
+  .search .count .fa {
+    padding-right: 0.5rem;
+    font-size: 1.2rem; }
+  .search .count span {
+    padding-right: 0.5rem;
+    color: #fd6e70;
+    font-size: 1.2rem;
+    font-weight: bold; }
+
+.search dl {
+  margin: 0;
+  padding: 0.25rem 0.5rem;
+  background-color: #f6f6f6;
+  border-bottom: 2px solid #fff;
+  border-radius: 2px; }
+
+.search dt {
+  padding: 0.25rem 0.25rem;
+  font-size: 0.9rem;
+  font-weight: bold; }
+
+.search dd {
+  margin: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  font-size: 0.8rem; }
+  .search dd label {
+    width: 30%;
+    padding: 0 1%; }
+    .search dd label.checked {
+      color: #fd6e70; }
+
+.search input[type="checkbox"] {
+  margin-right: 0.125rem; }
+
+.search .search_size dd,
+.search .search_cost dd {
+  font-size: 0.9rem; }
+
+.search .search_mvno,
+.search .search_option {
+  display: none; }
+  .search .search_mvno label,
+  .search .search_option label {
+    padding-bottom: 0.25rem; }
+
+.search .search_detail__close {
+  display: none; }
+
+.search button {
+  width: calc(100% - 2rem);
+  margin: 0.25rem 1rem;
+  padding: 0.5rem 1rem; }
+
+.search .search_detail__open,
+.search .search_detail__close {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background-color: #fff;
+  font-size: 0.9rem;
+  color: #337ab7; }
+  .search .search_detail__open .fa,
+  .search .search_detail__close .fa {
+    padding-left: 0.5rem;
+    color: #337ab7; }
+
+.search .search_button {
+  margin-bottom: 1rem;
+  background-color: #337ab7;
+  border: 1px solid #337ab7;
+  border-radius: 3px;
+  color: #fff; }
+  .search .search_button .fa-search {
+    padding-right: 0.5rem;
+    font-size: 1.2rem;
+    color: #fff; }
+  .search .search_button .fa-chevron-right {
+    padding-left: 1rem;
+    color: #fff; }
+
+.search .unit {
+  padding: 0 0.5rem; }
+
+.search .between {
+  padding-right: 0.5rem; }
+
 /* easy explain */
 .easy_explain {
   text-align: center; }
@@ -1395,6 +1493,34 @@ article.page {
     .mvno_card .mvno_card__catch {
       height: 3rem;
       line-height: 1.5; }
+  .search dl {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 0.5rem 1rem; }
+    .search dl dt {
+      width: 6rem;
+      padding: 0.5rem 0.5rem;
+      font-size: 1rem; }
+    .search dl dd {
+      -webkit-box-flex: 1;
+      -webkit-flex: 1;
+          -ms-flex: 1;
+              flex: 1;
+      padding: 0.5rem 0.5rem;
+      font-size: 1rem; }
+  .search input[type="checkbox"] {
+    margin-right: 0.25rem; }
+  .search .search_mvno label,
+  .search .search_option label {
+    padding-bottom: 0.5rem; }
+  .search button {
+    width: 45%;
+    line-height: 1.8rem; }
+  .search .search_detail__open,
+  .search .search_detail__close {
+    font-size: 1rem; }
   .easy_explain {
     display: -webkit-box;
     display: -webkit-flex;
