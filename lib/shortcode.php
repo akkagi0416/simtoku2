@@ -462,7 +462,7 @@ function mvno_search_func()
   $html = <<<EOM
     <section class="search">
       <h3>格安SIMの簡単検索・比較</h3>
-      <p class="count"><i class="fa fa-search" aria-hidden="true"></i><span>0</span>件の該当</p>
+      <p class="count"><i class="fa fa-search" aria-hidden="true"></i><span>0</span>件のプランが該当</p>
       <form action="{$action_url}" method="GET">
         <dl class="search_type">
           <dt>SIMの種類</dt>
@@ -517,6 +517,7 @@ function mvno_search_func()
               <option value="0">0</option>
               <option value="500">500</option>
               <option value="1000">1000</option>
+              <option value="1500">1500</option>
               <option value="2000">2000</option>
               <option value="3000">3000</option>
               <option value="4000">4000</option>
@@ -529,6 +530,7 @@ function mvno_search_func()
               <option value="0">0</option>
               <option value="500">500</option>
               <option value="1000">1000</option>
+              <option value="1500">1500</option>
               <option value="2000">2000</option>
               <option value="3000">3000</option>
               <option value="4000">4000</option>
