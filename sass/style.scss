@@ -28,9 +28,10 @@ a{
   color: $color_sub;
 
   // text-decoration: none;
-  // &:hover{
-  //   text-decoration: underline;
-  // }
+  &:hover{
+    // text-decoration: underline;
+    text-decoration: none;
+  }
 }
 img{
   // display: block;

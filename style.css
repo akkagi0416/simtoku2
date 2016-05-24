@@ -171,6 +171,8 @@ Author URI: http://akkagi.info
 
 a {
   color: #337ab7; }
+  a:hover {
+    text-decoration: none; }
 
 img {
   max-width: 100%;
