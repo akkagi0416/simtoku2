@@ -170,10 +170,7 @@ Author URI: http://akkagi.info
     line-height: 1.4; }
 
 a {
-  color: #337ab7;
-  text-decoration: none; }
-  a:hover {
-    text-decoration: underline; }
+  color: #337ab7; }
 
 img {
   max-width: 100%;
@@ -1450,7 +1447,7 @@ article.page {
         -ms-flex-pack: distribute;
             justify-content: space-around; }
     .mvno_button button {
-      margin: 0 1rem;
+      margin: 0 1rem 2rem 1rem;
       -webkit-box-flex: 1;
       -webkit-flex: 1;
           -ms-flex: 1;

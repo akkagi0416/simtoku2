@@ -26,10 +26,11 @@ $header_height: 40px;
 
 a{
   color: $color_sub;
-  text-decoration: none;
-  &:hover{
-    text-decoration: underline;
-  }
+
+  // text-decoration: none;
+  // &:hover{
+  //   text-decoration: underline;
+  // }
 }
 img{
   // display: block;
@@ -1309,7 +1310,7 @@ article.page{
     display: flex;
     justify-content: space-around;
     button{
-      margin: 0 1rem;
+      margin: 0 1rem 2rem 1rem;
       flex: 1;
       border-radius: 3px;
       a{
