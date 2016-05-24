@@ -18,6 +18,19 @@ function remove_class( $classes, $item ){
 }
 function remove_id( $id ){ return $id = array(); }
 
+/* 投稿画面のタイトルに文字カウンター */
+function excerpt_count_js(){
+  echo '<script>jQuery(document).ready(function(){
+    jQuery("#titlewrap").after("<div style=\"position:absolute;top:5px;right:5px;color:#666;\"><small>文字数: </small><input type=\"text\" value=\"0\" maxlength=\"3\" size=\"3\" id=\"title_counter\" readonly=\"\" style=\"background:#fff;\"></div>");
+    jQuery("#title_counter").val(jQuery("#title").val().length);
+    jQuery("#title").keyup( function() {
+      jQuery("#title_counter").val(jQuery("#title").val().length);
+    });
+  });</script>';
+}
+add_action( 'admin_head-post.php', 'excerpt_count_js');
+add_action( 'admin_head-post-new.php', 'excerpt_count_js');
+
 /*
  * previous_next
  */
