@@ -353,7 +353,7 @@ nav ul {
         margin-left: auto;
         color: #666; }
 
-nav .info a:before, nav .plan a:before, nav .guide a:before, nav .news a:before, nav .faq a:before, nav .ranking a:before {
+nav .info a:before, nav .plan a:before, nav .guide a:before, nav .news a:before, nav .faq a:before, nav .ranking a:before, nav .search a:before {
   font-family: 'FontAwesome';
   font-size: 1.2rem;
   vertical-align: middle;
@@ -378,7 +378,7 @@ nav .faq a:before {
 nav .ranking a:before {
   content: '\f091'; }
 
-nav .ranking a:before {
+nav .search a:before {
   content: '\f002'; }
 
 .dummy_header {
