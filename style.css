@@ -1241,6 +1241,9 @@ article.page {
       width: 5rem;
       padding: 0;
       background-color: #fff; }
+      .scroll_div table tr th:first-child img:hover {
+        opacity: 0.7;
+        cursor: pointer; }
     .scroll_div table tr th:nth-of-type(2) {
       width: 4rem; }
     .scroll_div table tr th:nth-of-type(3) {

@@ -32,7 +32,7 @@ function search_count()
 function make_sql_where( $serialize )
 {
   // search.php(submit)も取得できるので、ここでlogとり
-  $log_str = $_SERVER['REMOTE_ADDR'] . ',' . $serialize;
+  $log_str = $_SERVER['REQUEST_TIME'] . ',' . $_SERVER['REMOTE_ADDR'] . ',' . $serialize;
   error_log( $log_str. "\n", 3, '/var/www/sim/wp-content/themes/sim2/log/ajax.log' );
 
   parse_str($serialize, $params); 

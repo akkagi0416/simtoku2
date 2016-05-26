@@ -12,11 +12,12 @@
           
           $where = make_sql_where( $query );
           $sql = "SELECT m.afi_txt, m.mvno, p.* FROM plans AS p JOIN mvnos AS m ON m.id = p.mvno_id WHERE 1" . $where;
-          echo '<script>console.log("' . $sql . '");</script>';
+          // echo '<script>console.log("' . $sql . '");</script>';
 
           $m = new Mvno();
           $result = $m->get_data_by_sql( $sql );
           $html = <<<EOM
+            <h3>検索結果の一覧</h3>
             <div class="scroll_div" >
               <table _fixedhead="rows:1; cols:2;" class="not_responsive">
                 <thead>
@@ -75,7 +76,16 @@ EOM;
             $html .= "</tr>";
           }
           $html .= '</tbody></table></div>';
-          // echo $result[0]['c'];
+          echo $html;
+
+          $sql = "SELECT m.shortname FROM plans AS p JOIN mvnos AS m ON m.id = p.mvno_id WHERE 1" . $where . " GROUP BY m.shortname ORDER BY p.mvno_id";
+          $shortnames = $m->get_data_by_sql( $sql );
+          $html  = '<h3>検索に該当した格安SIM</h3>';
+          $html .= '<div class="mvno_cards">';
+          foreach( $shortnames as $row ){
+            $html .= do_shortcode( "[mvno_card shortname='{$row['shortname']}']" ); 
+          }
+          $html .= '</div>';
           echo $html;
         }
       ?>

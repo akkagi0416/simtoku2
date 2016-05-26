@@ -107,7 +107,12 @@ jQuery(function(){
       jQuery(this).parent().removeClass('checked');
     }
   });
-
+  // add link to logo
+  jQuery('.scroll_div table img').click(function(){
+    // var tmp = jQuery(this).parent().next('a').click();
+    var href = jQuery(this).parent().parent().find('a').attr('href');
+    window.open(href);
+  });
 });
 function countup(number)
 {
