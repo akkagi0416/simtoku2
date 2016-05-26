@@ -66,18 +66,18 @@ function make_sql_where( $serialize )
   }
   if( isset( $params['sim_option'] ) ){
     foreach( $params['sim_option'] as $sim_option ){
-      if( $sim_option == 'is_beginner'       ){ $where .= ' AND p.is_beginner       = 1'; }
-      if( $sim_option == 'is_voice_discount' ){ $where .= ' AND p.is_voice_discount = 1'; }
-      if( $sim_option == 'is_same_day_home'  ){ $where .= ' AND p.is_same_day_home  = 1'; }
-      if( $sim_option == 'is_carry_over'     ){ $where .= ' AND p.is_carry_over     = 1'; }
-      if( $sim_option == 'is_onoff'          ){ $where .= ' AND p.is_onoff          = 1'; }
-      if( $sim_option == 'is_no_limit'       ){ $where .= ' AND p.is_no_limit       = 1'; }
-      if( $sim_option == 'is_share'          ){ $where .= ' AND p.is_share          = 1'; }
-      if( $sim_option == 'is_wifi'           ){ $where .= ' AND p.is_wifi           = 1'; }
-      if( $sim_option == 'is_free'           ){ $where .= ' AND p.is_free           = 1'; }
-      if( $sim_option == 'is_point'          ){ $where .= ' AND p.is_point          = 1'; }
-      if( $sim_option == 'is_docomo'         ){ $where .= ' AND p.is_docomo         = 1'; }
-      if( $sim_option == 'is_au'             ){ $where .= ' AND p.is_au             = 1'; }
+      if( $sim_option == 1 ){ $where .= ' AND p.is_beginner       = 1'; }
+      if( $sim_option == 2 ){ $where .= ' AND p.is_voice_discount = 1'; }
+      if( $sim_option == 3 ){ $where .= ' AND p.is_same_day_home  = 1'; }
+      if( $sim_option == 4 ){ $where .= ' AND p.is_carry_over     = 1'; }
+      if( $sim_option == 5 ){ $where .= ' AND p.is_onoff          = 1'; }
+      if( $sim_option == 6 ){ $where .= ' AND p.is_no_limit       = 1'; }
+      if( $sim_option == 7 ){ $where .= ' AND p.is_share          = 1'; }
+      if( $sim_option == 8 ){ $where .= ' AND p.is_wifi           = 1'; }
+      if( $sim_option == 9 ){ $where .= ' AND p.is_free           = 1'; }
+      if( $sim_option == 10){ $where .= ' AND p.is_point          = 1'; }
+      if( $sim_option == 11){ $where .= ' AND p.is_docomo         = 1'; }
+      if( $sim_option == 12){ $where .= ' AND p.is_au             = 1'; }
     }
   }
 

@@ -418,7 +418,7 @@ function mobile_func( $atts )
 
     $html = <<< EOM
     <section class="mobile_info">
-      <h2 id="{$mobile['shortname']}">{$mobile['name']}</h2>
+      <h3 id="{$mobile['shortname']}">{$mobile['name']}</h3>
       <div class="row">
           <div class="col-sm-5">
               <a href="{$mobile['url']}" target="_blank"><img src="{$mobile['img']}" alt="{$mobile['name']}"></a>
@@ -459,6 +459,28 @@ function mvno_search_func()
 
   $action_url = get_bloginfo( 'url' ) . '/search';
 
+  if( isset( $_GET['submit'] ) ){
+    // 検索ボタンを押されてこのページへ来た処理
+    $url = $_SERVER['REQUEST_URI'];
+    $query = parse_url( $url, PHP_URL_QUERY );
+    // echo "<p>{$query}</p>";
+    parse_str($query, $params);
+  }        
+
+  // 未定義の時用
+  if( !isset( $params['sim_type']     ) ){ $params['sim_type']     = Array(); }
+  if( !isset( $params['sim_size_min'] ) ){ $params['sim_size_min'] = ''; }
+  if( !isset( $params['sim_size_max'] ) ){ $params['sim_size_max'] = ''; }
+  if( !isset( $params['sim_cost_min'] ) ){ $params['sim_cost_min'] = ''; }
+  if( !isset( $params['sim_cost_max'] ) ){ $params['sim_cost_max'] = ''; }
+  if( !isset( $params['sim_mvno']     ) ){ $params['sim_mvno']     = Array(); }
+  if( !isset( $params['sim_option']   ) ){ $params['sim_option']   = Array(); }
+
+
+  $sim_type_1 = in_array( 1, $params['sim_type'] ) ? 'checked' : '';
+  $sim_type_2 = in_array( 2, $params['sim_type'] ) ? 'checked' : '';
+  $sim_type_3 = in_array( 3, $params['sim_type'] ) ? 'checked' : '';
+
   $html = <<<EOM
     <section class="search">
       <h3>格安SIMの簡単検索・比較</h3>
@@ -467,45 +489,28 @@ function mvno_search_func()
         <dl class="search_type">
           <dt>SIMの種類</dt>
           <dd>
-            <label><input type="checkbox" name="sim_type[]" value="1">データSIM</label>
-            <label><input type="checkbox" name="sim_type[]" value="2">SMS付SIM</label>
-            <label><input type="checkbox" name="sim_type[]" value="3">通話SIM</label>
+            <label><input type="checkbox" name="sim_type[]" value="1" {$sim_type_1}>データSIM</label>
+            <label><input type="checkbox" name="sim_type[]" value="2" {$sim_type_2}>SMS付SIM</label>
+            <label><input type="checkbox" name="sim_type[]" value="3" {$sim_type_3}>通話SIM</label>
           </dd>
         </dl>
         <dl class="search_size">
           <dt>データ容量</dt>
           <dd>
             <select id="" name="sim_size_min">
-              <option value=""></option>
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
-              <option value="15">15</option>
-              <option value="20">20</option>
-            </select><span class="unit">GB</span><span class="between">～</span>
-            <select id="" name="sim_size_max">
-              <option value=""></option>
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
-              <option value="15">15</option>
-              <option value="20">20</option>
+EOM;
+  $sim_sizes = array('', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '15', '20');
+  foreach( $sim_sizes as $sim_size ){
+    $selected = $params['sim_size_min'] == $sim_size ? 'selected' : '';
+    $html .= "<option value='{$sim_size}' {$selected}>{$sim_size}</option>";
+  }
+  $html .= '</select><span class="unit">GB</span><span class="between">～</span>
+            <select id="" name="sim_size_max">';
+  foreach( $sim_sizes as $sim_size ){
+    $selected = $params['sim_size_max'] == $sim_size ? 'selected' : '';
+    $html .= "<option value='{$sim_size}' {$selected}>{$sim_size}</option>";
+  }
+  $html .= <<< EOM
             </select><span class="unit">GB</span>
           </dd>
         </dl>
@@ -513,30 +518,41 @@ function mvno_search_func()
           <dt>月額料金</dt>
           <dd>
             <select id="" name="sim_cost_min">
-              <option value=""></option>
-              <option value="0">0</option>
-              <option value="500">500</option>
-              <option value="1000">1000</option>
-              <option value="1500">1500</option>
-              <option value="2000">2000</option>
-              <option value="3000">3000</option>
-              <option value="4000">4000</option>
-              <option value="5000">5000</option>
-              <option value="6000">6000</option>
-              <option value="7000">7000</option>
-            </select><span class="unit">円</span><span class="between">～</span>
-            <select id="" name="sim_cost_max">
-              <option value=""></option>
-              <option value="0">0</option>
-              <option value="500">500</option>
-              <option value="1000">1000</option>
-              <option value="1500">1500</option>
-              <option value="2000">2000</option>
-              <option value="3000">3000</option>
-              <option value="4000">4000</option>
-              <option value="5000">5000</option>
-              <option value="6000">6000</option>
-              <option value="7000">7000</option>
+EOM;
+  $sim_costs = array('', '500', '1000', '1500', '2000', '3000', '4000', '5000', '6000', '7000' );
+  foreach( $sim_costs as $sim_cost ){
+    $selected = $params['sim_cost_min'] == $sim_cost ? 'selected' : '';
+    $html .= "<option value='{$sim_cost}' {$selected}>{$sim_cost}</option>";
+  }
+  $html .= '</select><span class="unit">円</span><span class="between">～</span>
+            <select id="" name="sim_cost_max">';
+  foreach( $sim_costs as $sim_cost ){
+    $selected = $params['sim_cost_max'] == $sim_cost ? 'selected' : '';
+    $html .= "<option value='{$sim_cost}' {$selected}>{$sim_cost}</option>";
+  }
+  $sim_mvno_1 = in_array( 1, $params['sim_mvno'] ) ? 'checked' : '';
+  $sim_mvno_2 = in_array( 2, $params['sim_mvno'] ) ? 'checked' : '';
+  $sim_mvno_3 = in_array( 3, $params['sim_mvno'] ) ? 'checked' : '';
+  $sim_mvno_4 = in_array( 4, $params['sim_mvno'] ) ? 'checked' : '';
+  $sim_mvno_5 = in_array( 5, $params['sim_mvno'] ) ? 'checked' : '';
+  $sim_mvno_6 = in_array( 6, $params['sim_mvno'] ) ? 'checked' : '';
+  $sim_mvno_7 = in_array( 7, $params['sim_mvno'] ) ? 'checked' : '';
+  $sim_mvno_8 = in_array( 8, $params['sim_mvno'] ) ? 'checked' : '';
+
+  $sim_option_1  = in_array(  1, $params['sim_option'] ) ? 'checked' : '';
+  $sim_option_2  = in_array(  2, $params['sim_option'] ) ? 'checked' : '';
+  $sim_option_3  = in_array(  3, $params['sim_option'] ) ? 'checked' : '';
+  $sim_option_4  = in_array(  4, $params['sim_option'] ) ? 'checked' : '';
+  $sim_option_5  = in_array(  5, $params['sim_option'] ) ? 'checked' : '';
+  $sim_option_6  = in_array(  6, $params['sim_option'] ) ? 'checked' : '';
+  $sim_option_7  = in_array(  7, $params['sim_option'] ) ? 'checked' : '';
+  $sim_option_8  = in_array(  8, $params['sim_option'] ) ? 'checked' : '';
+  $sim_option_9  = in_array(  9, $params['sim_option'] ) ? 'checked' : '';
+  $sim_option_10 = in_array( 10, $params['sim_option'] ) ? 'checked' : '';
+  $sim_option_11 = in_array( 11, $params['sim_option'] ) ? 'checked' : '';
+  $sim_option_12 = in_array( 12, $params['sim_option'] ) ? 'checked' : '';
+
+  $html .= <<< EOM
             </select><span class="unit">円</span>
           </dd>
         </dl>
@@ -544,31 +560,31 @@ function mvno_search_func()
         <dl class="search_mvno">
           <dt>格安SIM</dt>
           <dd>
-            <label><input type="checkbox" name="sim_mvno[]" value="1">OCN モバイル ONE</label>
-            <label><input type="checkbox" name="sim_mvno[]" value="2">IIJmio</label>
-            <label><input type="checkbox" name="sim_mvno[]" value="3">DMM mobile</label>
-            <label><input type="checkbox" name="sim_mvno[]" value="4">U-mobile</label>
-            <label><input type="checkbox" name="sim_mvno[]" value="5">楽天モバイル</label>
-            <label><input type="checkbox" name="sim_mvno[]" value="6">BIGLOBE</label>
-            <label><input type="checkbox" name="sim_mvno[]" value="7">mineo</label>
-            <label><input type="checkbox" name="sim_mvno[]" value="8">NifMo</label>
+            <label><input type="checkbox" name="sim_mvno[]" value="1" {$sim_mvno_1}>OCN モバイル ONE</label>
+            <label><input type="checkbox" name="sim_mvno[]" value="2" {$sim_mvno_2}>IIJmio</label>
+            <label><input type="checkbox" name="sim_mvno[]" value="3" {$sim_mvno_3}>DMM mobile</label>
+            <label><input type="checkbox" name="sim_mvno[]" value="4" {$sim_mvno_4}>U-mobile</label>
+            <label><input type="checkbox" name="sim_mvno[]" value="5" {$sim_mvno_5}>楽天モバイル</label>
+            <label><input type="checkbox" name="sim_mvno[]" value="6" {$sim_mvno_6}>BIGLOBE</label>
+            <label><input type="checkbox" name="sim_mvno[]" value="7" {$sim_mvno_7}>mineo</label>
+            <label><input type="checkbox" name="sim_mvno[]" value="8" {$sim_mvno_8}>NifMo</label>
           </dd>
         </dl>
         <dl class="search_option">
           <dt>こだわり</dt>
           <dd>
-            <label><input type="checkbox" name="sim_option[]" value="is_beginner">初心者向け</label>
-            <label><input type="checkbox" name="sim_option[]" value="is_voice_discount">通話割引</label>
-            <label><input type="checkbox" name="sim_option[]" value="is_same_day_home">自宅で即日開通</label>
-            <label><input type="checkbox" name="sim_option[]" value="is_carry_over">データ繰越</label>
-            <label><input type="checkbox" name="sim_option[]" value="is_onoff">高速通信ON/OFF</label>
-            <label><input type="checkbox" name="sim_option[]" value="is_no_limit">通信制限なし</label>
-            <label><input type="checkbox" name="sim_option[]" value="is_share">シェアプラン</label>
-            <label><input type="checkbox" name="sim_option[]" value="is_wifi">WiFiスポット</label>
-            <label><input type="checkbox" name="sim_option[]" value="is_free">使い放題</label>
-            <label><input type="checkbox" name="sim_option[]" value="is_point">ポイント</label>
-            <label><input type="checkbox" name="sim_option[]" value="is_docomo">docomo回線</label>
-            <label><input type="checkbox" name="sim_option[]" value="is_au">au回線</label>
+            <label><input type="checkbox" name="sim_option[]" value="1"  {$sim_option_1}>初心者向け</label>
+            <label><input type="checkbox" name="sim_option[]" value="2"  {$sim_option_2}>通話割引</label>
+            <label><input type="checkbox" name="sim_option[]" value="3"  {$sim_option_3}>自宅で即日開通</label>
+            <label><input type="checkbox" name="sim_option[]" value="4"  {$sim_option_4}>データ繰越</label>
+            <label><input type="checkbox" name="sim_option[]" value="5"  {$sim_option_5}>高速通信ON/OFF</label>
+            <label><input type="checkbox" name="sim_option[]" value="6"  {$sim_option_6}>通信制限なし</label>
+            <label><input type="checkbox" name="sim_option[]" value="7"  {$sim_option_7}>シェアプラン</label>
+            <label><input type="checkbox" name="sim_option[]" value="8"  {$sim_option_8}>WiFiスポット</label>
+            <label><input type="checkbox" name="sim_option[]" value="9"  {$sim_option_9}>使い放題</label>
+            <label><input type="checkbox" name="sim_option[]" value="10" {$sim_option_10}>ポイント</label>
+            <label><input type="checkbox" name="sim_option[]" value="11" {$sim_option_11}>docomo回線</label>
+            <label><input type="checkbox" name="sim_option[]" value="12" {$sim_option_12}>au回線</label>
           </dd>
         </dl>
         <button class="search_detail__close">追加条件を閉じる<i class="fa fa-chevron-up" aria-hidden="true"></i></button>

@@ -24,6 +24,7 @@ $header_height: 40px;
 @mixin col-lg{ @media (min-width: 62em){ @content; } }
 @mixin col-xl{ @media (min-width: 75em){ @content; } }
 
+/* basic tag */
 a{
   color: $color_sub;
 
@@ -57,6 +58,19 @@ body{
 }
 p{
   margin-bottom: 2rem;
+}
+table{
+  margin-bottom: 2rem;
+  th, td{
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    // box-sizing: border-box;
+  }
+  th{
+    background-color: #eee;
+  }
+  td{
+  }
 }
 
 .fa{
@@ -246,10 +260,12 @@ aside{
     a{
       display: flex;
       align-items: center;
+      text-decoration: none;
       &:hover{
         .ranking_box__img{
           transform: scale(1.02);
         }
+        text-decoration: underline;
       }
     }
     &__img img{
@@ -450,18 +466,6 @@ article.page{
     code{
       font-family: Consolas, monospace;
       white-space: pre-wrap;
-    }
-  }
-  table{
-    margin-bottom: 2rem;
-    th, td{
-      padding: 0.5rem;
-      border: 1px solid #ccc;
-    }
-    th{
-      background-color: #eee;
-    }
-    td{
     }
   }
 }
@@ -1061,6 +1065,45 @@ article.page{
   }
   .between{
     padding-right: 0.5rem;
+  }
+}
+/* result table */
+.scroll_div{
+  width: 100%;
+  height: 70vh;
+  // max-height: 70vh;
+  margin-bottom: 3rem;
+  overflow: scroll;
+  table{
+    width: 100%;
+    table-layout: fixed;
+    th, td{
+      padding: 0.125rem;
+      text-align: center;
+    }
+    th {
+      width: 3rem;
+    }
+    td{
+      height: 2rem;
+    }
+    tr th:first-child{
+      width: 5rem;
+      padding: 0;
+      background-color: #fff;
+    }
+    tr th:nth-of-type(2){
+      width: 4rem;
+    }
+    tr th:nth-of-type(3){
+      width: 8rem;
+    }
+    tr td:nth-of-type(1){
+      padding: 0 0.25rem;
+    }
+    tr:hover td{
+      background-color: #f6f6f6;
+    }
   }
 }
 /* easy explain */

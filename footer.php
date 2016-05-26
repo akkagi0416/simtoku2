@@ -35,7 +35,8 @@ jQuery(function(){
 
   // add div.table-responsive to table
   jQuery('article table').each(function(){
-    if( jQuery(this).parent('div.table-responsive').length ){
+    if(jQuery(this).parent('div.table-responsive').length ){
+    }else if(jQuery(this).hasClass('not_responsive')){
     }else{
       // div.table-responsiveで囲まれていなければ囲う
       jQuery(this).wrap('<div class="table-responsive"></div>');
@@ -98,6 +99,7 @@ jQuery(function(){
     return false; // イベントをformまで伝搬させないため
   });
   // check button
+  jQuery("input[type='checkbox']:checked").parent().addClass('checked');
   jQuery("input[type='checkbox']").change(function(){
     if(jQuery(this).is(':checked')){
       jQuery(this).parent().addClass('checked');
@@ -105,6 +107,7 @@ jQuery(function(){
       jQuery(this).parent().removeClass('checked');
     }
   });
+
 });
 function countup(number)
 {
