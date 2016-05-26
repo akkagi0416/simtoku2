@@ -214,6 +214,7 @@ nav{
   .news a:before{    @extend %font_awesome; content: '\f0f6'; }
   .faq a:before{     @extend %font_awesome; content: '\f0e5'; }
   .ranking a:before{ @extend %font_awesome; content: '\f091'; } // fa-trophy
+  .ranking a:before{ @extend %font_awesome; content: '\f002'; } // fa-search
 }
 .dummy_header{
   padding-top: $header_height;

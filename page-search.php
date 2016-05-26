@@ -1,7 +1,8 @@
 <?php get_header(); ?>
   <main>
     <article class="page">
-      <h1>search</h1>
+      <h1 class="title"><?php the_title(); ?></h1>
+
       <?php echo do_shortcode( '[mvno_search]' ); ?>
       <?php
         if( isset( $_GET['submit'] ) ){

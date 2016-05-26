@@ -32,7 +32,11 @@ function search_count()
 function make_sql_where( $serialize )
 {
   // search.php(submit)も取得できるので、ここでlogとり
-  $log_str = $_SERVER['REQUEST_TIME'] . ',' . $_SERVER['REMOTE_ADDR'] . ',' . $serialize;
+  $ip = '';
+  if( isset( $_SERVER['REMOTE_ADDR'] ) ){ $ip = $_SERVER['REMOTE_ADDR']; }
+  if( isset( $_SERVER['HTTP_X_REAL_IP'] ) ){ $ip = $_SERVER['HTTP_X_REAL_IP']; }  // for nginx cache
+  $log_str = $_SERVER['REQUEST_TIME'] . ',' . $ip . ',' . $serialize;
+
   error_log( $log_str. "\n", 3, '/var/www/sim/wp-content/themes/sim2/log/ajax.log' );
 
   parse_str($serialize, $params); 

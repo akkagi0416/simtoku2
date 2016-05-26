@@ -378,6 +378,9 @@ nav .faq a:before {
 nav .ranking a:before {
   content: '\f091'; }
 
+nav .ranking a:before {
+  content: '\f002'; }
+
 .dummy_header {
   padding-top: 40px; }
 
