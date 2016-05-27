@@ -79,7 +79,8 @@ jQuery(function(){
   });
 
   // search
-  countup();
+  // if( jQuery('.search form').length ){ countup(); } // 読み込み時のカウント
+  if( location.href.match(/search/) ){ countup(); }
   jQuery('.search form').on('change', function(){
     countup();
     return false;
@@ -117,7 +118,7 @@ jQuery(function(){
 function countup(number)
 {
   var param = jQuery('.search form').serialize();
-  console.log(param);
+  // console.log(param);
   jQuery.ajax({
     type: 'GET',
     url: ajax_url,

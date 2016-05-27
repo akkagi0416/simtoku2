@@ -35,7 +35,9 @@ function make_sql_where( $serialize )
   $ip = '';
   if( isset( $_SERVER['REMOTE_ADDR'] ) ){ $ip = $_SERVER['REMOTE_ADDR']; }
   if( isset( $_SERVER['HTTP_X_REAL_IP'] ) ){ $ip = $_SERVER['HTTP_X_REAL_IP']; }  // for nginx cache
-  $log_str = $_SERVER['REQUEST_TIME'] . ',' . $ip . ',' . $serialize;
+  date_default_timezone_set('Asia/Tokyo');
+  $datestr = date("YmdHis");
+  $log_str = $_SERVER['REQUEST_TIME'] . ',' . $datestr . ',' . $ip . ',' . $serialize;
 
   error_log( $log_str. "\n", 3, '/var/www/sim/wp-content/themes/sim2/log/ajax.log' );
 
