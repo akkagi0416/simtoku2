@@ -79,8 +79,8 @@ jQuery(function(){
   });
 
   // search
-  // if( jQuery('.search form').length ){ countup(); } // 読み込み時のカウント
-  if( location.href.match(/search/) ){ countup(); }
+  if( jQuery('.search form').length ){ countup(); } // 読み込み時のカウント
+  // if( location.href.match(/search/) ){ countup(); }
   jQuery('.search form').on('change', function(){
     countup();
     return false;
@@ -113,6 +113,17 @@ jQuery(function(){
     // var tmp = jQuery(this).parent().next('a').click();
     var href = jQuery(this).parent().parent().find('a').attr('href');
     window.open(href);
+  });
+
+  // click解析
+  jQuery('a').on('click', function() {
+      var category = '外部リンク';
+      var action = 'クリック';
+      var label = $(this).attr('href');
+      if (label.indexOf('http://simtoku.net') != -1 || label.indexOf('http') == -1 ) {
+          category = '内部リンク';
+      }
+      ga('send', 'event', category, action, label);
   });
 });
 function countup(number)
