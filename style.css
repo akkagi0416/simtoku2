@@ -629,12 +629,14 @@ article.page {
   padding: 1.5rem 0 1rem 0;
   font-size: 1.2rem; }
 
+.update,
 .postdate {
   padding-right: 1rem;
   display: block;
   text-align: right;
   font-size: 0.9rem;
   color: #666; }
+  .update i,
   .postdate i {
     padding-right: 0.2rem; }
 

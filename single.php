@@ -4,7 +4,10 @@
       <?php while( have_posts() ) : the_post(); ?>
         <article class="single">
           <h1 class="title"><?php the_title(); ?></h1>
-          <time class="postdate" datetime="<?php the_time('Y-m-d'); ?>"><i class="fa fa-clock-o" aria-hidden="true"></i><?php the_time('Y-m-d'); ?></time>
+          <?php if( get_the_modified_date('Y-m-d') != get_the_time('Y-m-d') ) : ?>
+            <time class="update" datetime="<?php the_modified_date('Y-m-d'); ?>"><i class="fa fa-pencil-square-o fa-fw" aria-hidden="true"></i><?php the_modified_date('Y-m-d'); ?></time>
+          <?php endif; ?>
+          <time class="postdate" datetime="<?php the_time('Y-m-d'); ?>"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i><?php the_time('Y-m-d'); ?></time>
           <?php the_content(); ?>
         </article>
         <section class="relation">
