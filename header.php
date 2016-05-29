@@ -4,7 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title><?php wp_title(); ?></title>
+  <?php if( is_front_page() ) : ?>
+    <title><?php bloginfo( 'name' ); ?></title>
+  <?php else : ?>
+    <title><?php wp_title(); ?> | <?php bloginfo( 'name' ); ?></title>
+  <?php endif; ?>
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
