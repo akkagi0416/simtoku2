@@ -1358,6 +1358,12 @@ article.page {
   footer small {
     padding-left: 1rem;
     text-align: left; }
+  /* single page */
+  article.single h2,
+  article.page h2 {
+    margin-bottom: 2rem;
+    padding: 0.8rem 1.2rem;
+    font-size: 1.1rem; }
   /* category page */
   .topics {
     display: -webkit-box;

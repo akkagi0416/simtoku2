@@ -1239,6 +1239,15 @@ article.page{
       text-align: left;
     }
   }
+  /* single page */
+  article.single,
+  article.page{
+    h2{
+      margin-bottom: 2rem;
+      padding: 0.8rem 1.2rem;
+      font-size: 1.1rem;
+    }
+  }
   /* category page */
   .topics{
     display: flex;
