@@ -602,6 +602,19 @@ article.page{
   }
 }
 /*
+ * front page
+ */
+.frontpage{
+  padding: 0 0.5rem;
+  h2{
+    padding: 0.3rem 0.7rem;
+    font-size: 1rem;
+    border-bottom: 3px solid $color_main;
+    border-left: 3px solid $color_main;
+    border-radius: 3px;
+  }
+}
+/*
  * mvno short_code
  */
 .mvno_s
@@ -1301,6 +1314,14 @@ article.page{
       &:hover{
         border: 1px solid $color_sub;
       }
+    }
+  }
+  /* front page */
+  .frontpage{
+    h2{
+      margin-bottom: 2rem;
+      padding: 0.8rem 1.2rem;
+      font-size: 1.1rem;
     }
   }
   /* for short code */

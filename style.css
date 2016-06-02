@@ -769,6 +769,18 @@ article.page {
       border-bottom-right-radius: 3px; }
 
 /*
+ * front page
+ */
+.frontpage {
+  padding: 0 0.5rem; }
+  .frontpage h2 {
+    padding: 0.3rem 0.7rem;
+    font-size: 1rem;
+    border-bottom: 3px solid #fdde6e;
+    border-left: 3px solid #fdde6e;
+    border-radius: 3px; }
+
+/*
  * mvno short_code
  */
 .mvno_s {
@@ -1439,6 +1451,11 @@ article.page {
                   order: 1; }
       .topics .topic:hover {
         border: 1px solid #337ab7; }
+  /* front page */
+  .frontpage h2 {
+    margin-bottom: 2rem;
+    padding: 0.8rem 1.2rem;
+    font-size: 1.1rem; }
   /* for short code */
   .mvno_s h3 {
     margin-top: 3rem; }
