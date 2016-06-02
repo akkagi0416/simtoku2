@@ -32,8 +32,13 @@ EOM;
     ?>
   </section>
   <section class="news">
+    <h2><a href="<?php echo home_url( '/singles' ); ?>">新着記事</a></h2>
+    <?php sidebar_pickup( '', 4 ); ?>
+    <p class="to_category"><a href="<?php echo home_url( '/singles' ); ?>"><i class="fa fa-arrow-right"></i>他の新着記事一覧</a></p>
+  </section>
+  <section class="news">
     <h2><a href="<?php echo home_url( '/category/news' ); ?>">格安SIMニュース</a></h2>
-    <?php sidebar_pickup( 'news', 5 ); ?>
+    <?php sidebar_pickup( 'news', 4 ); ?>
     <p class="to_category"><a href="<?php echo home_url( '/category/news' ); ?>"><i class="fa fa-arrow-right"></i>他のニュース一覧</a></p>
   </section>
   <section class="blog">
