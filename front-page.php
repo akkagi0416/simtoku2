@@ -31,6 +31,7 @@
           <?php endwhile; ?>
         <?php endif; ?>
       </div>
+      <p class="to_category"><a href="<?php echo home_url( '/singles' ); ?>"><i class="fa fa-arrow-right"></i>他の新着記事一覧</a>
     </section>
   </main>
   <?php get_sidebar(); ?>
