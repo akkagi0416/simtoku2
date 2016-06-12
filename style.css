@@ -195,6 +195,7 @@ strong {
 
 body {
   font-family: "メイリオ", Meiryo, "ヒラギノ角ゴ Pro W3", Hiragino Kaku Gothic Pro, "ＭＳ Ｐゴシック", sans-serifPT Sans Caption,Josefin Sans,"メイリオ", Meiryo, "ヒラギノ角ゴ Pro W3", Hiragino Kaku Gothic Pro, "ＭＳ Ｐゴシック", sans-serif;
+  font-family: Quicksand, 游ゴシック体, 'Yu Gothic', YuGothic, 'ヒラギノ角ゴシック Pro', 'Hiragino Kaku Gothic Pro', メイリオ, Meiryo, Osaka, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
   line-height: 1.6;
   color: #333; }
 
@@ -353,7 +354,7 @@ nav ul {
         margin-left: auto;
         color: #666; }
 
-nav .info a:before, nav .plan a:before, nav .guide a:before, nav .news a:before, nav .faq a:before, nav .ranking a:before, nav .search a:before {
+nav .info a:before, nav .plan a:before, nav .guide a:before, nav .news a:before, nav .faq a:before, nav .ranking a:before, nav .search a:before, nav .beginner a:before {
   font-family: 'FontAwesome';
   font-size: 1.2rem;
   vertical-align: middle;
@@ -380,6 +381,9 @@ nav .ranking a:before {
 
 nav .search a:before {
   content: '\f002'; }
+
+nav .beginner a:before {
+  content: '\f044'; }
 
 .dummy_header {
   padding-top: 40px; }
@@ -623,7 +627,8 @@ article.page {
     margin-bottom: 2rem;
     padding: 1rem;
     background-color: #eee;
-    border-radius: 3px; }
+    border-radius: 3px;
+    font-size: 0.9rem; }
     article.single pre code,
     article.page pre code {
       font-family: Consolas, monospace;

@@ -222,6 +222,16 @@ function mvno_review( $shortname, $count = 2 )
     $age = $review['age'];
     $class = $sex == 1 ? 'man' : 'woman';
     $href = get_bloginfo( 'url' ) . '/' . $shortname . '/';
+    if( $shortname == 'all' ){
+      if( $review['mvno_id'] != '' ){
+        $href = get_bloginfo( 'url' ) . '/' . $review['shortname'] . '/';
+        $mvno = "<a href='$href'><span class='review_mvno'>" . $review['sim_text'] . "</span></a>";
+      }else{
+        $mvno = "<span class='review_mvno'>" . $review['sim_text'] . "</span>";
+      }
+    }else{
+      $mvno = "<a href='$href'><span class='review_mvno'>" . $review['sim_text'] . "</span></a>";
+    }
     if( $sex == 1 && $age <  5 ){ $img = '<img src="' . get_bloginfo( 'template_url' ) . '/img/man_01.png" alt="男性">'; }
     if( $sex == 1 && $age >= 5 ){ $img = '<img src="' . get_bloginfo( 'template_url' ) . '/img/man_02.png" alt="男性">'; }
     if( $sex == 2 && $age <  5 ){ $img = '<img src="' . get_bloginfo( 'template_url' ) . '/img/woman_01.png" alt="女性">'; }
@@ -233,7 +243,7 @@ function mvno_review( $shortname, $count = 2 )
         <div class="review_header__img">{$img}</div>
         <div class="review_header__text">
           <h3 class="review_title">
-            <a href="{$href}"><span class="review_mvno">{$review['sim_text']}</span></a>
+            {$mvno}
             <span class="sex">{$review['sex_text']}</span>
             <span class="age">{$review['age']}0代</span>
           </h3>

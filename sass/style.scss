@@ -53,6 +53,7 @@ strong{
 
 body{
   font-family: "メイリオ", Meiryo, "ヒラギノ角ゴ Pro W3", Hiragino Kaku Gothic Pro, "ＭＳ Ｐゴシック", sans-serifPT Sans Caption,Josefin Sans,"メイリオ", Meiryo, "ヒラギノ角ゴ Pro W3", Hiragino Kaku Gothic Pro, "ＭＳ Ｐゴシック", sans-serif;
+  font-family: Quicksand, 游ゴシック体, 'Yu Gothic', YuGothic, 'ヒラギノ角ゴシック Pro', 'Hiragino Kaku Gothic Pro', メイリオ, Meiryo, Osaka, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
   line-height: 1.6;
   color: #333;
 }
@@ -215,6 +216,7 @@ nav{
   .faq a:before{     @extend %font_awesome; content: '\f0e5'; }
   .ranking a:before{ @extend %font_awesome; content: '\f091'; } // fa-trophy
   .search a:before{  @extend %font_awesome; content: '\f002'; } // fa-search
+  .beginner a:before{ @extend %font_awesome; content: '\f044'; } // fa-pencil-square-o
 }
 .dummy_header{
   padding-top: $header_height;
@@ -470,6 +472,7 @@ article.page{
     // background-color: rgba($color_main, 0.2);
     background-color: #eee;
     border-radius: 3px;
+    font-size: 0.9rem;
     code{
       font-family: Consolas, monospace;
       white-space: pre-wrap;
