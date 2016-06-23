@@ -109,7 +109,7 @@ function mvno_function( $mvno )
   $html = '<ul class="mvno_function">';
   $class = $mvno['is_beginner']       == 1 ? 'ok' : 'ng'; $html .= "<li class=\"$class\">初心者<br>安心</li>";
   $class = $mvno['is_shop']           == 1 ? 'ok' : 'ng'; $html .= "<li class=\"$class\">店舗販売</li>";
-  $class = $mvno['is_voice_discount'] == 1 ? 'ok' : 'ng'; $html .= "<li class=\"$class\">通話割引</li>";
+  $class = $mvno['is_voice_discount'] == 1 ? 'ok' : 'ng'; $html .= "<li class=\"$class\">通話半額</li>";
   $class = $mvno['is_same_day_home']  == 1 ? 'ok' : 'ng'; $html .= "<li class=\"$class\">自宅で<br>即日開通</li>";
   $class = $mvno['is_carry_over']     == 1 ? 'ok' : 'ng'; $html .= "<li class=\"$class\">データ<br>繰り越し</li>";
   $class = $mvno['is_onoff']          == 1 ? 'ok' : 'ng'; $html .= "<li class=\"$class\">高速通信<br>ON/OFF</li>";
@@ -584,7 +584,7 @@ EOM;
           <dt>こだわり</dt>
           <dd>
             <label><input type="checkbox" name="sim_option[]" value="1"  {$sim_option_1}>初心者向け</label>
-            <label><input type="checkbox" name="sim_option[]" value="2"  {$sim_option_2}>通話割引</label>
+            <label><input type="checkbox" name="sim_option[]" value="2"  {$sim_option_2}>通話半額</label>
             <label><input type="checkbox" name="sim_option[]" value="3"  {$sim_option_3}>自宅で即日開通</label>
             <label><input type="checkbox" name="sim_option[]" value="4"  {$sim_option_4}>データ繰越</label>
             <label><input type="checkbox" name="sim_option[]" value="5"  {$sim_option_5}>高速通信ON/OFF</label>
