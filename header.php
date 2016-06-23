@@ -19,7 +19,7 @@
     ga('require', 'linkid');
     ga('send', 'pageview');
   </script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
   <link rel="stylesheet" href="<?php bloginfo( 'stylesheet_url' ); ?>">
   <?php wp_head(); ?>
