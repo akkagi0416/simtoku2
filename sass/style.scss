@@ -398,6 +398,34 @@ footer{
   z-index: 1000;
 }
 /*
+ * talk
+ */
+.talk{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  .talk_text{
+    position: relative;
+    padding: 1rem;
+    border-radius: 10px;
+    background-color: $color_sub;
+    color: #fff;
+    &:after{
+      position: absolute;
+      top: 30%;
+      right: -25px;
+      content: "";
+      width: 0;
+      height: 0;
+      border: 10px solid transparent;
+      border-left: 15px solid $color_sub;
+    }
+  }
+  .talk_img{
+    min-width: 5rem;
+  }
+}
+/*
  * single page
  */
 article.single,
@@ -1260,6 +1288,11 @@ article.page{
     small{
       padding-left: 1rem;
       text-align: left;
+    }
+  }
+  .talk{
+    .talk_text{
+      padding: 1.5rem 1.5rem 1.5rem 2rem;
     }
   }
   /* single page */
