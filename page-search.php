@@ -91,6 +91,11 @@ EOM;
         }
       ?>
     </article>
+    <?php if( have_posts() ) : ?>
+      <?php while( have_posts() ) : the_post(); ?>
+        <?php the_content(); ?>
+      <?php endwhile; ?>
+    <?php endif; ?>
   </main>
   <?php get_sidebar(); ?>
   <script type="text/javascript" src="<?php echo get_bloginfo( 'template_url' ); ?>/js/fixed_midashi.js"></script>
