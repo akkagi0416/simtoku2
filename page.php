@@ -17,6 +17,8 @@
         </article>
       <?php endwhile; ?>
     <?php endif; ?>
+
+    <?php sns_button(); ?>
   </main>
   <?php get_sidebar(); ?>
 <?php get_footer(); ?>

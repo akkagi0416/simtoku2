@@ -426,6 +426,73 @@ footer{
   }
 }
 /*
+ * sns button
+ */
+.sns_button{
+  display: flex;
+  list-style: none;
+  padding: 0 0.5rem;
+  li{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 0 1px;
+  }
+  .sns_button__bal {
+    position: relative;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 3px; 
+    font-size: 0.9rem;
+    text-align: center;
+  }
+  .sns_button__bal:after, .sns_button__bal:before {
+    top: 100%;
+    left: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+  }
+
+  .sns_button__bal:after {
+    border-color: rgba(255, 255, 255, 0);
+    border-top-color: #fff;
+    border-width: 6px;
+    margin-left: -6px;
+  }
+  .sns_button__bal:before {
+    border-color: rgba(204, 204, 204, 0);
+    border-top-color: #ccc;
+    border-width: 7px;
+    margin-left: -7px;
+  }
+  a{
+    color: #fff;
+    text-decoration: none;
+    .sns_button__icon{
+      display: flex;
+      justify-content: center;
+      margin-top: 0.5rem;
+      padding: 0.5rem;
+      line-height: 1;
+      border-radius: 2px;
+    }
+    .fa{
+      color: #fff;
+    }
+  }
+  .sns_button__icon_twitter{ background-color: #55acee; }
+  .sns_button__icon_facebook{ background-color: #315096; }
+  .sns_button__icon_hatebu{ background-color: #008fde; }
+  .sns_button__icon_googleplus{ background-color: #dd4b39; }
+  .sns_button__icon_pocket{ background-color: #ef3e56; }
+  .sns_button__icon_feedly{ background-color: #6cc655; }
+  .sns_button__icon_line{ background-color: #00c300; }
+}
+/*
  * single page
  */
 article.single,
@@ -1293,6 +1360,12 @@ article.page{
   .talk{
     .talk_text{
       padding: 1.5rem 1.5rem 1.5rem 2rem;
+    }
+  }
+  /* sns button */
+  .sns_button{
+    li{
+      padding: 0 0.125rem;
     }
   }
   /* single page */
