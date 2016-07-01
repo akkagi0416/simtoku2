@@ -96,6 +96,8 @@ EOM;
         <?php the_content(); ?>
       <?php endwhile; ?>
     <?php endif; ?>
+
+    <?php sns_button(); ?>
   </main>
   <?php get_sidebar(); ?>
   <script type="text/javascript" src="<?php echo get_bloginfo( 'template_url' ); ?>/js/fixed_midashi.js"></script>
