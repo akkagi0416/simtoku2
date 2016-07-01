@@ -591,18 +591,18 @@ article.page{
   }
   .box_yellow{
     @include box_color; 
-    background-color: rgba($color_main, 0.05);
-    border: 1px solid $color_main;
+    background-color: rgba($color_main, 0.02);
+    border: 1px solid rgba($color_main, 1.0);
   }
   .box_blue{
     @include box_color; 
-    background-color: rgba($color_sub, 0.05);
-    border: 1px solid $color_sub;
+    background-color: rgba($color_sub, 0.02);
+    border: 1px solid rgba($color_sub, 0.5);
   }
   .box_red{
     @include box_color; 
-    background-color: rgba($color_subsub, 0.05);
-    border: 1px solid $color_subsub;
+    background-color: rgba($color_subsub, 0.02);
+    border: 1px solid rgba($color_subsub, 0.5);
   }
 }
 .title{
