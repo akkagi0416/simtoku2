@@ -483,6 +483,9 @@ footer{
     .fa{
       color: #fff;
     }
+    &:hover{
+      opacity: 0.9;
+    }
   }
   .sns_button__icon_twitter{ background-color: #55acee; }
   .sns_button__icon_facebook{ background-color: #315096; }
