@@ -581,6 +581,7 @@ article.page{
   @mixin box_color{
     margin-right: 0.5rem;
     margin-left: 0.5rem;
+    margin-bottom: 2rem;
     padding: 1rem 3rem;
     background-color: rgba($color_main, 0.05);
     border: 1px solid $color_main;
