@@ -35,7 +35,7 @@
       <p class="to_category"><a href="<?php echo home_url( '/singles' ); ?>"><i class="fa fa-arrow-right"></i>他の新着記事一覧</a>
     </section>
 
-    <?php sns_button_home(); ?>
+    <?php sns_button(); ?>
   </main>
   <?php get_sidebar(); ?>
 <?php get_footer(); ?>

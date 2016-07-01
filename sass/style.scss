@@ -577,6 +577,33 @@ article.page{
       white-space: pre-wrap;
     }
   }
+
+  @mixin box_color{
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+    padding: 1rem 3rem;
+    background-color: rgba($color_main, 0.05);
+    border: 1px solid $color_main;
+    border-radius: 3px;
+    li{
+      padding: 0.5rem 0 0.5rem 0.25rem;
+    }
+  }
+  .box_yellow{
+    @include box_color; 
+    background-color: rgba($color_main, 0.05);
+    border: 1px solid $color_main;
+  }
+  .box_blue{
+    @include box_color; 
+    background-color: rgba($color_sub, 0.05);
+    border: 1px solid $color_sub;
+  }
+  .box_red{
+    @include box_color; 
+    background-color: rgba($color_subsub, 0.05);
+    border: 1px solid $color_subsub;
+  }
 }
 .title{
   margin: 0;
@@ -785,7 +812,7 @@ article.page{
     margin: 0;
     padding: 1rem;
     list-style: none;
-    border: 2px solid $color_main;
+    border: 1px solid $color_main;
     border-radius: 3px;
     background-color: rgba($color_main, 0.05);
     li{
