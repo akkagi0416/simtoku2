@@ -1,12 +1,15 @@
 <aside>
   <section class="ranking">
-    <h2>人気ランキング</h2>
+    <h2>おすすめ格安SIM</h2>
     <?php
       $mvnos = array(
-        'rakuten' => '楽天モバイル',
-        'ocn'     => 'OCN モバイル ONE',
+        // 'rakuten' => '楽天モバイル',
+        // 'ocn'     => 'OCN モバイル ONE',
+        // 'iijmio'  => 'IIJmio',
+        // 'mineo'   => 'mineo',
+        // 'dmm'     => 'DMM mobile'
         'iijmio'  => 'IIJmio',
-        'mineo'   => 'mineo',
+        'rakuten' => '楽天モバイル',
         'dmm'     => 'DMM mobile'
       );
       $html = '';

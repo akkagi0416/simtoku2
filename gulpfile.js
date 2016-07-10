@@ -10,7 +10,7 @@ gulp.task('sass', function(){
     .pipe(plumber())
     .pipe(sass({style: 'expanded'}))
     .pipe(autoprefixer())
-    .pipe(cssmin())
+    // .pipe(cssmin())
     .pipe(gulp.dest('./'));
 });
 
