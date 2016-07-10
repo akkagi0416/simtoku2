@@ -52,9 +52,10 @@ strong{
 .visible{ display: block; }
 
 body{
-  font-family: "メイリオ", Meiryo, "ヒラギノ角ゴ Pro W3", Hiragino Kaku Gothic Pro, "ＭＳ Ｐゴシック", sans-serifPT Sans Caption,Josefin Sans,"メイリオ", Meiryo, "ヒラギノ角ゴ Pro W3", Hiragino Kaku Gothic Pro, "ＭＳ Ｐゴシック", sans-serif;
-  font-family: Quicksand, 游ゴシック体, 'Yu Gothic', YuGothic, 'ヒラギノ角ゴシック Pro', 'Hiragino Kaku Gothic Pro', メイリオ, Meiryo, Osaka, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
-  font-weight: 500;
+  // font-family: "メイリオ", Meiryo, "ヒラギノ角ゴ Pro W3", Hiragino Kaku Gothic Pro, "ＭＳ Ｐゴシック", sans-serifPT Sans Caption,Josefin Sans,"メイリオ", Meiryo, "ヒラギノ角ゴ Pro W3", Hiragino Kaku Gothic Pro, "ＭＳ Ｐゴシック", sans-serif;
+  // font-family: Quicksand, 游ゴシック体, 'Yu Gothic', YuGothic, 'ヒラギノ角ゴシック Pro', 'Hiragino Kaku Gothic Pro', メイリオ, Meiryo, Osaka, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+  font-family: 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', sans-serif;
+  font-weight: normal;
   line-height: 1.6;
   color: #333;
 }
@@ -145,7 +146,7 @@ header{
   margin: 0;
   padding-left: 0.5rem;
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: normal;
   line-height: 1.2;
   color: #333;
   &:before{
@@ -339,7 +340,7 @@ aside{
 .topic_text__title{
   margin: 0;
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: normal;
   line-height: 1.4;
 }
 .topic_text__date{
@@ -768,7 +769,7 @@ article.page{
     margin-bottom: 1rem;
     th{
       white-space: nowrap;
-      font-weight: 500;
+      font-weight: normal;
     }
     th, td{
       line-height: 1.2;
@@ -953,7 +954,7 @@ article.page{
   }
   .review_title{
     margin: 0;
-    font-weight: 500;
+    font-weight: normal;
     font-size: 0.9rem;
     .sex{ padding: 0 1rem; }
     &:before{ display: none; }
@@ -1072,7 +1073,7 @@ article.page{
     justify-content: center;
     background-color: $color_sub;
     border: 1px solid $color_sub;
-    font-weight: 500;
+    font-weight: normal;
     color: #fff;
     &:before{ display: none; }
   }

@@ -194,9 +194,8 @@ strong {
   display: block; }
 
 body {
-  font-family: "メイリオ", Meiryo, "ヒラギノ角ゴ Pro W3", Hiragino Kaku Gothic Pro, "ＭＳ Ｐゴシック", sans-serifPT Sans Caption,Josefin Sans,"メイリオ", Meiryo, "ヒラギノ角ゴ Pro W3", Hiragino Kaku Gothic Pro, "ＭＳ Ｐゴシック", sans-serif;
-  font-family: Quicksand, 游ゴシック体, 'Yu Gothic', YuGothic, 'ヒラギノ角ゴシック Pro', 'Hiragino Kaku Gothic Pro', メイリオ, Meiryo, Osaka, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
-  font-weight: 500;
+  font-family: 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', sans-serif;
+  font-weight: normal;
   line-height: 1.6;
   color: #333; }
 
@@ -292,7 +291,7 @@ header {
   margin: 0;
   padding-left: 0.5rem;
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: normal;
   line-height: 1.2;
   color: #333; }
   .logo:before {
@@ -501,7 +500,7 @@ aside ul {
 .topic_text__title {
   margin: 0;
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: normal;
   line-height: 1.4; }
 
 .topic_text__date {
@@ -965,7 +964,7 @@ article.page {
   margin-bottom: 1rem; }
   .mvno_header .mvno_header__spec th {
     white-space: nowrap;
-    font-weight: 500; }
+    font-weight: normal; }
   .mvno_header .mvno_header__spec th, .mvno_header .mvno_header__spec td {
     line-height: 1.2;
     font-size: 0.9rem; }
@@ -1159,7 +1158,7 @@ article.page {
           padding-right: 1rem; }
   .review .review_title {
     margin: 0;
-    font-weight: 500;
+    font-weight: normal;
     font-size: 0.9rem; }
     .review .review_title .sex {
       padding: 0 1rem; }
@@ -1271,7 +1270,7 @@ article.page {
             justify-content: center;
     background-color: #337ab7;
     border: 1px solid #337ab7;
-    font-weight: 500;
+    font-weight: normal;
     color: #fff; }
     .mvno_card .mvno_card__title:before {
       display: none; }
