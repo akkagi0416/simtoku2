@@ -1,6 +1,6 @@
 <aside>
   <section class="ranking">
-    <h2>おすすめ格安SIM</h2>
+    <h2><a href="http://simtoku.net/20160710_ranking/">おすすめ格安SIM</a></h2>
     <?php
       $mvnos = array(
         // 'rakuten' => '楽天モバイル',
