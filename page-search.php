@@ -59,7 +59,7 @@ EOM;
             $html .= $row['sim_sms']           == 1 ? '<td>o</td>' : '<td>&nbsp;</td>';
             $html .= $row['sim_voice']         == 1 ? '<td>o</td>' : '<td>&nbsp;</td>';
             $html .= "<td>{$row['cost']}</td>";
-            $html .= "<td>{$row['data_size']}</td>";
+            $html .= $row['data_size']         == 999 ? '<td>使い放題</td>' : "<td>{$row['data_size']}</td>";
             $html .= "<td>{$row['speed_max']}</td>";
             $html .= $row['is_beginner']       == 1 ? '<td>o</td>' : '<td>&nbsp;</td>';
             $html .= $row['is_shop']           == 1 ? '<td>o</td>' : '<td>&nbsp;</td>';

@@ -366,6 +366,7 @@ EOM;
     if( $plan['plan_basic'] == 1 ){
       $judge_data  = $plan['sim_data']  == 1 ? 'o' : '&nbsp;';
       $judge_voice = $plan['sim_voice'] == 1 ? 'o' : '&nbsp;';
+      $data_size   = $plan['data_size'] == 999 ? '使い放題' : "{$plan['data_size']}GB";
       // $constract_period = $plan['constract_period'] != null ? $plan['constract_period'] . 'か月' : '&nbsp;';
       $html .= <<<EOM
         <tr>
@@ -373,7 +374,7 @@ EOM;
           <td>{$judge_data}</td>
           <td>{$judge_voice}</td>
           <td>{$plan['cost']}円</td>
-          <td>{$plan['data_size']}GB</td>
+          <td>{$data_size}</td>
           <td>{$plan['speed_max']}Mbps</td>
         </tr>
 EOM;
