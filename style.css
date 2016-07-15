@@ -194,7 +194,7 @@ strong {
   display: block; }
 
 body {
-  font-family: "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック体", YuGothic, 'ヒラギノ角ゴシック Pro', 'Hiragino Kaku Gothic Pro', メイリオ, Meiryo, Osaka, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+  font-family: '游ゴシック Medium', 'Yu Gothic Medium', '游ゴシック体', YuGothic, 'ヒラギノ角ゴシック Pro', 'Hiragino Kaku Gothic Pro', メイリオ, Meiryo, Osaka, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
   font-weight: normal;
   line-height: 1.6;
   color: #333; }
@@ -1533,7 +1533,7 @@ article.page {
     .bread_crumb > span {
       padding: 0 0.5rem; }
   .title {
-    padding: 2.5rem 1rem 1rem 1rem; }
+    padding: 3rem 1rem; }
   .postdate {
     padding-bottom: 1rem; }
   footer .footer_text ul {
@@ -1557,6 +1557,13 @@ article.page {
     margin-bottom: 2rem;
     padding: 0.8rem 1.2rem;
     font-size: 1.1rem; }
+  article.single h3,
+  article.page h3 {
+    font-size: 1.1rem; }
+    article.single h3:before,
+    article.page h3:before {
+      padding-right: 0.8rem;
+      font-size: 1.8rem; }
   /* category page */
   .topics {
     display: -webkit-box;

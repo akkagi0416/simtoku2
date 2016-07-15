@@ -35,7 +35,7 @@ function mvno_s_func( $atts )
   $mvno = $m->get_mvno( $shortname );
 
   $html  = '<section class="mvno_s">';
-  $html .= '<h3 class="mvno_title">' . $mvno['mvno'] . '</h3>';
+  $html .= '<h2 class="mvno_title">' . $mvno['mvno'] . '</h2>';
   $html .= mvno_header( $mvno );
   $html .= mvno_function( $mvno );
   $html .= mvno_feature( $mvno );
@@ -54,7 +54,7 @@ function mvno_top_func( $atts )
   $m = new Mvno();
   $mvno = $m->get_mvno( $shortname );
 
-  $html  = '<h3 class="mvno_title">' . $mvno['mvno'] . '</h3>';
+  $html  = '<h2 class="mvno_title">' . $mvno['mvno'] . '</h2>';
   $html .= mvno_header( $mvno );
   $html .= mvno_function( $mvno );
   $html .= mvno_feature( $mvno );
