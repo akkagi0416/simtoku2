@@ -3,6 +3,7 @@
 
     <?php if( have_posts() ) : ?>
       <?php while( have_posts() ) : the_post(); ?>
+        <?php $class = ''; ?>
         <article class="page <?php echo $class; ?>">
           <h1 class="title"><?php the_title(); ?></h1>
           <?php the_content(); ?>
@@ -32,7 +33,7 @@
           <?php endwhile; ?>
         <?php endif; ?>
       </div>
-      <p class="to_category"><a href="<?php echo home_url( '/singles' ); ?>"><i class="fa fa-arrow-right"></i>他の新着記事一覧</a>
+      <p class="to_category"><a href="<?php echo home_url( '/singles' ); ?>"><i class="fa fa-arrow-right"></i>他の新着記事一覧</a></p>
     </section>
 
     <?php sns_button(); ?>

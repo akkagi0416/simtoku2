@@ -344,6 +344,13 @@ aside{
   font-weight: normal;
   line-height: 1.4;
 }
+/* for h3 erase */
+.frontpage .topic_text__title{
+  font-size: 1rem;
+  &:before{
+    content: none;
+  }
+}
 .topic_text__date{
   font-size: 0.8rem;
   color: #999;
