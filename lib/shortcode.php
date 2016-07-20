@@ -613,32 +613,37 @@ function topics_new_func()
 {
   $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
   $args = array(
-      'posts_per_page' => 6,
-      'paged' => $paged,
+    'posts_per_page' => 6,
+    'paged' => $paged,
   );
   $my_query = new WP_Query( $args );
 
-?>
+  $topics = '';
+  if( $my_query->have_posts() ){
+    while( $my_query->have_posts() ){
+      $my_query->the_post();
+
+      $title     = get_the_title();
+      $permalink = get_the_permalink();
+      $datetime  = get_the_time( 'Y-m-d' );
+      $thumbnail = get_the_post_thumbnail( get_the_ID(), 'thumbnail' );
+      // $thumbnail = get_the_post_thumbnail( $post->ID, 'thumbnail' );
+      $topics .= make_topic( '', $title, $permalink, $datetime, $thumbnail );
+    }
+  }
+
+  $href = home_url( '/singles' );
+  $html =<<< EOM
   <section class="frontpage">
     <h2>新着記事</h2>
     <div class="topics">
-      <?php if( $my_query->have_posts() ) : ?>
-        <?php while( $my_query->have_posts() ) : $my_query->the_post(); ?>
-          <?php
-            $title     = get_the_title();
-            $permalink = get_the_permalink();
-            $datetime  = get_the_time( 'Y-m-d' );
-            $thumbnail = get_the_post_thumbnail( get_the_ID(), 'thumbnail' );
-            // $thumbnail = get_the_post_thumbnail( $post->ID, 'thumbnail' );
-            echo make_topic( '', $title, $permalink, $datetime, $thumbnail );
-          ?>
-        <?php endwhile; ?>
-      <?php endif; ?>
+      {$topics}
     </div>
-    <p class="to_category"><a href="<?php echo home_url( '/singles' ); ?>"><i class="fa fa-arrow-right"></i>他の新着記事一覧</a></p>
+    <p class="to_category"><a href="{$href}"><i class="fa fa-arrow-right"></i>他の新着記事一覧</a></p>
   </section>
+EOM;
 
-<?php
+  return $html;
 }
 
 add_shortcode( 'mvno_s',       'mvno_s_func' );
