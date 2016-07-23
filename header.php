@@ -9,6 +9,18 @@
   <?php else : ?>
     <title><?php wp_title(); ?> | <?php bloginfo( 'name' ); ?></title>
   <?php endif; ?>
+  <?php
+    $description = get_post_meta( $post->ID, 'description', true );
+    if( $description != null ){
+  ?>
+    <meta name="description" content="<?php echo $description; ?>">
+  <?php
+    }else{
+  ?>
+    <meta name="description" content="<?php echo bloginfo( 'description' ); ?>">
+  <?php
+    }
+  ?>
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
