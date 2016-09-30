@@ -84,6 +84,7 @@ function make_sql_where( $serialize )
       if( $sim_option == 10){ $where .= ' AND p.is_point          = 1'; }
       if( $sim_option == 11){ $where .= ' AND p.is_docomo         = 1'; }
       if( $sim_option == 12){ $where .= ' AND p.is_au             = 1'; }
+      if( $sim_option == 13){ $where .= ' AND p.is_5min           = 1'; }
     }
   }
 

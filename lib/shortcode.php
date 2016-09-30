@@ -118,7 +118,8 @@ function mvno_function( $mvno )
   $class = $mvno['is_wifi']           == 1 ? 'ok' : 'ng'; $html .= "<li class=\"$class\">WiFi<br>スポット</li>";
   $class = $mvno['is_free']           == 1 ? 'ok' : 'ng'; $html .= "<li class=\"$class\">使い放題</li>";
   $class = $mvno['is_coupon']         == 1 ? 'ok' : 'ng'; $html .= "<li class=\"$class\">容量追加</li>";
-  $class = $mvno['is_point']          == 1 ? 'ok' : 'ng'; $html .= "<li class=\"$class\">ポイント</li>";
+  $class = $mvno['is_point']          == 1 ? 'ok' : 'ng'; $html .= "<li class=\"$class\">ポイント<br>サービス</li>";
+  $class = $mvno['is_5min']           == 1 ? 'ok' : 'ng'; $html .= "<li class=\"$class\">5分かけ放題</li>";
   $html .= '</ul>';
 
   return $html;
@@ -562,6 +563,7 @@ EOM;
   $sim_option_10 = in_array( 10, $params['sim_option'] ) ? 'checked' : '';
   $sim_option_11 = in_array( 11, $params['sim_option'] ) ? 'checked' : '';
   $sim_option_12 = in_array( 12, $params['sim_option'] ) ? 'checked' : '';
+  $sim_option_13 = in_array( 13, $params['sim_option'] ) ? 'checked' : '';
 
   $html .= <<< EOM
             </select><span class="unit">円</span>
@@ -593,9 +595,10 @@ EOM;
             <label><input type="checkbox" name="sim_option[]" value="7"  {$sim_option_7}>シェアプラン</label>
             <label><input type="checkbox" name="sim_option[]" value="8"  {$sim_option_8}>WiFiスポット</label>
             <label><input type="checkbox" name="sim_option[]" value="9"  {$sim_option_9}>使い放題</label>
-            <label><input type="checkbox" name="sim_option[]" value="10" {$sim_option_10}>ポイント</label>
+            <label><input type="checkbox" name="sim_option[]" value="10" {$sim_option_10}>ポイントサービス</label>
             <label><input type="checkbox" name="sim_option[]" value="11" {$sim_option_11}>docomo回線</label>
             <label><input type="checkbox" name="sim_option[]" value="12" {$sim_option_12}>au回線</label>
+            <label><input type="checkbox" name="sim_option[]" value="13" {$sim_option_13}>5分かけ放題</label>
           </dd>
         </dl>
         <button class="search_detail__close">追加条件を閉じる<i class="fa fa-chevron-up" aria-hidden="true"></i></button>

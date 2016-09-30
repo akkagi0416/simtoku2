@@ -29,6 +29,7 @@
                     <th>データSIM</th>
                     <th>SMS付SIM</th>
                     <th>通話SIM</th>
+                    <th>回線</th>
                     <th>料金(円)</th>
                     <th>データ容量(GB)</th>
                     <th>通信速度(Mbps)</th>
@@ -43,7 +44,8 @@
                     <th>WiFiスポット</th>
                     <th>使い放題</th>
                     <th>容量追加</th>
-                    <th>ポイント</th>
+                    <th>ポイントサービス</th>
+                    <th>5分かけ放題</th>
                     <th>最低契約期間(か月)</th>
                   </tr>
                 </thead>
@@ -58,6 +60,7 @@ EOM;
             $html .= $row['sim_data']          == 1 ? '<td>o</td>' : '<td>&nbsp;</td>';
             $html .= $row['sim_sms']           == 1 ? '<td>o</td>' : '<td>&nbsp;</td>';
             $html .= $row['sim_voice']         == 1 ? '<td>o</td>' : '<td>&nbsp;</td>';
+            $html .= $row['is_docomo']         == 1 ? '<td>docomo</td>' : '<td>au</td>';
             $html .= "<td>{$row['cost']}</td>";
             $html .= $row['data_size']         == 999 ? '<td>使い放題</td>' : "<td>{$row['data_size']}</td>";
             $html .= "<td>{$row['speed_max']}</td>";
@@ -73,6 +76,7 @@ EOM;
             $html .= $row['is_free']           == 1 ? '<td>o</td>' : '<td>&nbsp;</td>';
             $html .= $row['is_coupon']         == 1 ? '<td>o</td>' : '<td>&nbsp;</td>';
             $html .= $row['is_point']          == 1 ? '<td>o</td>' : '<td>&nbsp;</td>';
+            $html .= $row['is_5min']           == 1 ? '<td>o</td>' : '<td>&nbsp;</td>';
             $html .= "<td>{$row['constract_period']}</td>";
             $html .= "</tr>";
           }
