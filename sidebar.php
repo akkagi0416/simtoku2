@@ -10,7 +10,7 @@
         // 'dmm'     => 'DMM mobile'
         'iijmio'  => 'IIJmio',
         'rakuten' => '楽天モバイル',
-        'dmm'     => 'DMM mobile'
+        'dmm'     => 'DMM モバイル'
       );
       $html = '';
       $count = 1;
