@@ -1,5 +1,9 @@
 <?php
 
+// wp_headの不要なものを削除
+remove_action( 'wp_head', 'wp_generator' );
+remove_action( 'wp_head', 'wp_shortlink_wp_head' );
+
 add_theme_support( 'menus' );
 add_theme_support( 'post-thumbnails' );
 
